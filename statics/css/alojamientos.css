@@ -1,0 +1,63 @@
+
+
+.contenedor {
+
+	background-color: rgb(88, 88, 96);
+	display: grid;
+	height: 100vh;
+	grid-template-columns: 6fr 4fr;
+	grid-template-rows: 1fr 8fr 8fr 1fr;
+	gap: 10px 10px;
+}
+
+.titular-principal {
+	background-color: blue;
+}
+
+.menu-nav {
+	background-color: red;
+}
+
+.map {
+	background-color:green;
+}
+
+.alojamiento-selected {
+	background-color:yellowgreen;
+}
+
+main {
+	grid-column: 1/3;
+	grid-row: 3/4;
+	background-color: blueviolet;
+}
+
+.alojamiento-lista {
+
+	background-color: yellow;
+	display: flex;
+	flex-wrap: wrap;
+	gap: 10px;
+	justify-content: space-between;
+}
+
+.alojamiento-lista li {
+	background-color: rgb(226, 131, 174);
+}
+
+.footer {
+	background-color:black;
+	grid-column: 1/3;
+	grid-row: 4/5;
+}
+
+
+/* 
+@media only screen and (max-width: 850px) {
+	
+}
+
+@media screen and (max-width: 600px) {
+
+} 
+*/
