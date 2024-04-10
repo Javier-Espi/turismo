@@ -36,9 +36,10 @@ main {
 
 	background-color: yellow;
 	display: flex;
+	flex-direction: column;
 	flex-wrap: wrap;
 	gap: 10px;
-	justify-content: space-between;
+	justify-content:space-evenly
 }
 
 .alojamiento-lista li {
@@ -51,6 +52,24 @@ main {
 	grid-row: 4/5;
 }
 
+@media screen and (max-width: 600px) {
+	.contenedor {
+		display: flex;
+		flex-direction: column;
+	}
+	.map{
+		height: 40%;	
+	}
+	.alojamiento-selected{
+		height: 40%;
+	}
+	.menu-nav {
+		order: 10
+	}
+
+}
+
+
 
 /* 
 @media only screen and (max-width: 850px) {
@@ -58,6 +77,4 @@ main {
 }
 
 @media screen and (max-width: 600px) {
-
-} 
 */
