@@ -24,9 +24,8 @@
     justify-content: center;
 }
 
-.map {
-	background-color:green;
-	min-height: 70vh;
+#map {
+	min-height: 700px;
 }
 
 .alojamiento-selected {
@@ -168,7 +167,7 @@ main {
 }
 
 	
-@media screen and (min-device-width: 1950px) {
+@media screen and (min-device-width: 2050px) {
 	* {
 		font-size: large;
 	}
@@ -196,8 +195,8 @@ main {
 	}
 
 	.alojamiento-selected-item-principal-img {
-		height: 800px;
-		width: 800px;
+		height: 650px;
+		width: 650px;
 	}
 
 	.alojamiento-lista-item {

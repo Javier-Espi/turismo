@@ -3,6 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Estilos para funcionamiento mapas leaflet -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+    integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+    crossorigin=""/>
+    <!-- Js de Mapa Leaflet Asegurarse de ponerlo despues del Leaflet.CSS sino falla -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+     integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+     crossorigin=""></script>
     <link rel="stylesheet" href="../statics/css/style.css" type="text/css">
     <link rel="stylesheet" href="../statics/css/alojamientos.css" type="text/css">
     <title>Document</title>
@@ -15,7 +23,11 @@
         <nav class="menu-nav">
             <a href="../templates/registro-alojamientos.html   "> Registro Nuevo Alojamiento</a>
         </nav>
-        <section class="map"> MAPA</section>
+        <section class="map-container">
+            <div id="map"></div>
+            <script type="text/javascript" src="../statics/js/index-pre - alojamiento-map.js"></script>
+            <script type="text/javascript" src="../statics/js/crud-alojamientos.js"></script>
+        </section>
         <section class="alojamiento-selected">
             <div class="alojamiento-selected-item">
                 <div class="alojamiento-selected-item-principal">
@@ -30,7 +42,7 @@
                         <a href="tel:+444555555">+444 55 5555</a>
                     </p>
                 <p class="alojamiento-selected-item-detalle-email">
-                    <a href="mailto:nowhere@mozilla.org">Send email to nowhere</a>
+                    <a href="mailto:nowhere@mozilla.org">enviar mail al propietario</a>
                 </p>
                 <p class="alojamiento-selected-item-detalle-direccion">calle 1 Numero 123</p>
                 </div>
