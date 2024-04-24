@@ -1,7 +1,7 @@
 //  ****************************** pasar a carpeta reutilizables ************************
 
 function activaDesactivaClasePorId(id, clase, activado) {
-    var elemento = document.getElementById(id);
+    let elemento = document.getElementById(id);
     if (activado) {  
         elemento.classList.add(clase);
     } else {
@@ -16,22 +16,24 @@ function activaDesactivaClasePorId(id, clase, activado) {
 
 //  *******************************************************************************************
 
+function obtenerDatosAlojamientos() {
+    return fetch('../statics/data/alojamientos-crud.json').then(response => response.json());
+}
+
+function crearMarcador(coordenadas, id) {
+    let marker = L.marker(coordenadas);
+    marker.on('click', function() {
+        actualizarAlojamientoSeleccionadoPorId(id);
+    });
+    marker.addTo(map);
+}
+
 function actualizarListaAlojamientos() {
-    fetch('../statics/data/alojamientos-crud.json')
-    .then(response => response.json())
+    obtenerDatosAlojamientos()
     .then(data => {
         const listaAlojamientos = document.querySelector('.alojamiento-lista');
         data.forEach(alojamiento => {
-            // MARCADORES EN EL MAPA
-                // se creo para cada alojamiento un marcador
-            var marker = L.marker(alojamiento.coordenadas);
-                // se vincula el evento de clic al marcador para ejecutar una funcion con id de parametro
-            marker.on('click', function(e) {
-                actualizarAlojamientoSeleccionadoPorId(alojamiento.id);
-            });
-                // se agraga al mapa cada marcador
-            marker.addTo(map);
-            // Se crea el HTML de la lista de Alojamientos
+            crearMarcador(alojamiento.coordenadas, alojamiento.id)
             const item = document.createElement('li');
             item.className = 'alojamiento-lista-item';
             item.id = `alojamiento-id-${alojamiento.id}`
@@ -51,6 +53,7 @@ function actualizarListaAlojamientos() {
                 </div>
                 </div>
             `;
+            // Si fueran muchos se puede evaluar  poner listener en el padre y sacar por event delegation del tarjet
             item.addEventListener('click', function () {
                 actualizarAlojamientoSeleccionadoPorId(alojamiento.id);
             }, false,);
@@ -67,17 +70,16 @@ function actualizarListaAlojamientos() {
             removerClaseQuitar.classList.remove("quitar");
         };
 
-        fetch('../statics/data/alojamientos-crud.json')
-          .then(response => response.json())
+        obtenerDatosAlojamientos()
           .then(data => {
             const alojamiento = data.find(aloj => aloj.id === id);
             if (!alojamiento) {
               throw new Error('Alojamiento no encontrado');
             } else {
 
-                var popup = L.popup()
+                let popup = L.popup()
                     .setLatLng(alojamiento.coordenadas)
-                    .setContent("Alojamiento Seleccionado")
+                    .setContent("Su selección")
                     .openOn(map);
 
                 activaDesactivaClasePorId(`alojamiento-id-${alojamiento.id}`, "quitar", true)
