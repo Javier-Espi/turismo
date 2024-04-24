@@ -23,32 +23,3 @@
             attribution: '<a href="http://www.osm.org/copyright" target="_blank">&copy OpenStreetMap</a>',
             //atribucion de los datos propiedad intelectual del MAPA OJO NO OLVIDAR CAMBIAR SI SE CAMBIA -
         }).addTo(map);
-
-        
-        // mostrar escala en el mapa (KM y ML podria sacar Ml o no...)
-        var escala = L.control.scale();
-        L.control.scale(escala).addTo(map);
-
-                // CUADRO AUXILIAR DE INFORMACION sobre el objeto de la capa activa sobre el que pasa el mouse
-                var infoZona = L.control({
-                    position: 'bottomright'
-                });
-        
-                infoZona.onAdd = function(map) {
-                    this._div = L.DomUtil.create('div', 'styleInfoZona');
-                    this.update();
-                    return this._div;
-                };
-
-                
-
- // Función que muestra al passar el mouse sobre el ramal
-    function muestraDatosEnInfo(e) {
-        var capa = e.target;
-        infoRamal.update(capa.feature.properties);
-    }
-
-// Función que resetea el cuadro de info cuando el mouse deja el ramal
-    function noMuestraDatosEnInfo(e) {
-        infoRamal.update();
-    }   
