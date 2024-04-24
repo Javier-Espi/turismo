@@ -1,0 +1,128 @@
+[
+    {
+      "id": 1,
+      "imagen": "../statics/data/Alojamiento.webp",
+      "cuit": 20024393968,
+      "nombre": "La casa del Bosque 1",
+      "web": "https://www.google.com.ar",
+      "telefono": 5555555551,
+      "correo": "bosque1@turismo.com.ar",
+      "direccion": "calle 1 Numero 123",
+      "coordenadas": [
+        -32.17222,
+        -64.77706
+      ]
+    },
+    {
+      "id": 2,
+      "imagen": "../statics/data/Alojamiento.webp",
+      "cuit": 20028938471,
+      "nombre": "La casa del Bosque 2222222222",
+      "web": "https://www.google.com.ar",
+      "telefono": 5555555552,
+      "correo": "bosque2@turismo.com.ar",
+      "direccion": "calle 2 Numero 123",
+      "coordenadas": [
+        -32.16583,
+        -64.77396
+      ]
+    },
+    {
+      "id": 3,
+      "imagen": "../statics/data/Alojamiento.webp",
+      "cuit": 20042507157,
+      "nombre": "La casa del Bosque 3",
+      "web": "https://www.google.com.ar",
+      "telefono": 5555555553,
+      "correo": "bosque3@turismo.com.ar",
+      "direccion": "calle 3 Numero 123",
+      "coordenadas": [
+        -32.171,
+        -64.77914
+      ]
+    },
+    {
+      "id": 4,
+      "imagen": "../statics/data/Alojamiento.webp",
+      "cuit": 20043573579,
+      "nombre": "La casa del Bosque 4",
+      "web": "https://www.google.com.ar",
+      "telefono": 5555555554,
+      "correo": "bosque4@turismo.com.ar",
+      "direccion": "calle 4 Numero 123",
+      "coordenadas": [
+        -32.17224,
+        -64.77704
+      ]
+    },
+    {
+      "id": 5,
+      "imagen": "../statics/data/Alojamiento.webp",
+      "cuit": 20043817818,
+      "nombre": "La casa del Bosque 5",
+      "web": "https://www.google.com.ar",
+      "telefono": 5555555555,
+      "correo": "bosque5@turismo.com.ar",
+      "direccion": "calle 5 Numero 123",
+      "coordenadas": [
+        -32.16995,
+        -64.77566
+      ]
+    },
+    {
+      "id": 6,
+      "imagen": "../statics/data/Alojamiento.webp",
+      "cuit": 20044390680,
+      "nombre": "La casa del Bosque 6",
+      "web": "https://www.google.com.ar",
+      "telefono": 5555555556,
+      "correo": "bosque6@turismo.com.ar",
+      "direccion": "calle 6 Numero 123",
+      "coordenadas": [
+        -32.1702,
+        -64.77564
+      ]
+    },
+    {
+      "id": 7,
+      "imagen": "../statics/data/Alojamiento.webp",
+      "cuit": 20044705606,
+      "nombre": "La casa del Bosque 7",
+      "web": "https://www.google.com.ar",
+      "telefono": 5555555557,
+      "correo": "bosque7@turismo.com.ar",
+      "direccion": "calle 7 Numero 123",
+      "coordenadas": [
+        -32.17167,
+        -64.76835
+      ]
+    },
+    {
+      "id": 8,
+      "imagen": "../statics/data/Alojamiento.webp",
+      "cuit": 20044775191,
+      "nombre": "La casa del Bosque 8",
+      "web": "https://www.google.com.ar",
+      "telefono": 5555555558,
+      "correo": "bosque8@turismo.com.ar",
+      "direccion": "calle 8 Numero 123",
+      "coordenadas": [
+        -32.17246,
+        -64.77444
+      ]
+    },
+    {
+      "id": 9,
+      "imagen": "../statics/data/Alojamiento.webp",
+      "cuit": 20045445934,
+      "nombre": "La casa del Bosque 9",
+      "web": "https://www.google.com.ar",
+      "telefono": 5555555559,
+      "correo": "bosque9@turismo.com.ar",
+      "direccion": "calle 9 Numero 123",
+      "coordenadas": [
+        -32.17177,
+        -64.7712
+      ]
+    }
+  ]
