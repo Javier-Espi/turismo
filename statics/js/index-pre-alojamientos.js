@@ -23,3 +23,6 @@
             attribution: '<a href="http://www.osm.org/copyright" target="_blank">&copy OpenStreetMap</a>',
             //atribucion de los datos propiedad intelectual del MAPA OJO NO OLVIDAR CAMBIAR SI SE CAMBIA -
         }).addTo(map);
+
+  
+
