@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulario de Registro de Alojamiento</title>
+    <link rel="stylesheet" href="../statics/css/style.css" type="text/css">
+    <link rel="stylesheet" href="../statics/css/registro-alojamientos.css" type="text/css">
+</head>
+<body>
+    <div class="contenedor">
+        <div class="contenedor-banner">
+            <header class="titular-principal">SECCION PARA TITULARES DE ALOJAMIENTOS EN XXXXXXXXXX  
+            </header>
+            <nav class="menu-nav-ir-atras">
+                <div id="btnIrAtras">
+                    boton atras
+                </div>  
+            </nav>
+        </div>
+        <nav class="menu-nav">
+            <section class="registro-alojamiento-registrarse-btn">REGISTRARSE
+            </section>
+            <div  class="registro-alojamiento-gestionar>
+                <section class="registro-alojamiento-gestionar-btn">GESTIONAR SU ALOJAMIENTO
+                </section>
+                <section  class="registro-alojamiento-gestionar-seleccion">selecione su alojamiento
+                    <form id="formularioSeleccion">
+                        <label></label>
+                        <input>
+                        <button id="btnEnviarUsuario type="submit">Ingresar</button>
+                    </form>
+                </section>
+            </div>
+        </nav>
+
+        <main>
+            <form id="formularioRegistro">
+                <label for="imagen">Imagen del alojamiento (600x600 / Enlace a ubicacion en internet):</label>
+                <input type="url" id="imagen" name="imagen" required>
+                <p class="formulario-columna-info">1</p>
+                
+                <label for="cuit">CUIT del propietario (11 dígitos sin guiones):</label>
+                <input type="text" id="cuit" name="cuit" required pattern="\d{11}">
+                <p class="formulario-columna-info">1</p>
+
+                <label for="nombre">Nombre comercial del alojamiento (máx. 30 caracteres):</label>
+                <input type="text" id="nombre" name="nombre" required maxlength="30">
+                <p class="formulario-columna-info">1</p>
+
+                <label for="web">Sitio web del alojamiento:</label>
+                <input type="url" id="web" name="web" required>
+                <p class="formulario-columna-info">1</p>
+
+                <label for="telefono">Número telefónico de contacto:</label>
+                <input type="tel" id="telefono" name="telefono" required pattern="\+54\d{9,13}">
+                <p class="formulario-columna-info">1</p>
+
+                <label for="correo">Correo electrónico de contacto:</label>
+                <input type="email" id="correo" name="correo" required>
+                <p class="formulario-columna-info">1</p>
+
+                <label for="direccion">Dirección del alojamiento:</label>
+                <input type="text" id="direccion" name="direccion" required>
+                <p class="formulario-columna-info">1</p>
+
+                <label for="latitud">Latitud (ejemplo: -32.17000):</label>
+                <input type="text" id="latitud" name="latitud" required pattern="-32\.1[6-8]\d{3}">
+                <p class="formulario-columna-info">1</p>
+
+                <label for="longitud">Longitud (ejemplo: -64.77000):</label>
+                <input type="text" id="longitud" name="longitud" required pattern="-64\.7[6-8]\d{3}">
+                <p class="formulario-columna-info">1</p>
+
+                <button id="btnEnviarRegistro" type="submit">Registrar Alojamiento</button>
+            </form>
+        </main>
+        <footer class="footer">
+            BT Volver a pagina principal
+        </footer>
+    </div>
+    <script src="../statics/js/registro-alojamientos.js"></script>
+</body>
+</html>

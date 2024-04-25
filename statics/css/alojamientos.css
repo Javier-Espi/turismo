@@ -20,8 +20,9 @@
 	background-color: red;
 	min-height: 5vh;
     display: flex;
+	text-align: center;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
 }
 
 #map {
