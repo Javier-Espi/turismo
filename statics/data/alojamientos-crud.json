@@ -1,6 +1,6 @@
 [
     {
-      "id": 1,
+      "id": 10,
       "imagen": "../statics/data/Alojamiento.webp",
       "cuit": 20024393968,
       "nombre": "La casa del Bosque 1",
@@ -14,7 +14,7 @@
       ]
     },
     {
-      "id": 2,
+      "id": 12,
       "imagen": "../statics/data/Alojamiento.webp",
       "cuit": 20028938471,
       "nombre": "La casa del Bosque 2222222222",
@@ -28,7 +28,7 @@
       ]
     },
     {
-      "id": 3,
+      "id": 13,
       "imagen": "../statics/data/Alojamiento.webp",
       "cuit": 20042507157,
       "nombre": "La casa del Bosque 3",
@@ -42,7 +42,7 @@
       ]
     },
     {
-      "id": 4,
+      "id": 14,
       "imagen": "../statics/data/Alojamiento.webp",
       "cuit": 20043573579,
       "nombre": "La casa del Bosque 4",
@@ -56,7 +56,7 @@
       ]
     },
     {
-      "id": 5,
+      "id": 15,
       "imagen": "../statics/data/Alojamiento.webp",
       "cuit": 20043817818,
       "nombre": "La casa del Bosque 5",
@@ -70,7 +70,7 @@
       ]
     },
     {
-      "id": 6,
+      "id": 16,
       "imagen": "../statics/data/Alojamiento.webp",
       "cuit": 20044390680,
       "nombre": "La casa del Bosque 6",
@@ -84,7 +84,7 @@
       ]
     },
     {
-      "id": 7,
+      "id": 17,
       "imagen": "../statics/data/Alojamiento.webp",
       "cuit": 20044705606,
       "nombre": "La casa del Bosque 7",
@@ -98,7 +98,7 @@
       ]
     },
     {
-      "id": 8,
+      "id": 18,
       "imagen": "../statics/data/Alojamiento.webp",
       "cuit": 20044775191,
       "nombre": "La casa del Bosque 8",
@@ -112,7 +112,7 @@
       ]
     },
     {
-      "id": 9,
+      "id": 19,
       "imagen": "../statics/data/Alojamiento.webp",
       "cuit": 20045445934,
       "nombre": "La casa del Bosque 9",

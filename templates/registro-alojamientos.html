@@ -9,73 +9,78 @@
 <body>
     <div class="contenedor">
         <div class="contenedor-banner">
-            <header class="titular-principal">SECCION PARA TITULARES DE ALOJAMIENTOS EN XXXXXXXXXX  
+            <header class="titular-principal">SOLO TITULARES DE ALOJAMIENTOS HABILITADOS  
             </header>
             <nav class="menu-nav-ir-atras">
-                <div id="btnIrAtras">
-                    boton atras
-                </div>  
+                <a href="../templates/alojamientos.html" id="navIrAlojamientos" >
+                    Volver a la página principal
+                </a>
             </nav>
         </div>
         <nav class="menu-nav">
-            <section class="registro-alojamiento-registrarse-btn">REGISTRARSE
+            <section class="registro-alojamiento-registrarse-btn" id="btnNavRegistrar">REGISTRAR NUEVO
             </section>
-            <div  class="registro-alojamiento-gestionar>
-                <section class="registro-alojamiento-gestionar-btn">GESTIONAR SU ALOJAMIENTO
-                </section>
-                <section  class="registro-alojamiento-gestionar-seleccion">selecione su alojamiento
-                    <form id="formularioSeleccion">
-                        <label></label>
-                        <input>
-                        <button id="btnEnviarUsuario type="submit">Ingresar</button>
-                    </form>
-                </section>
+            <div class="registro-alojamiento-gestionar">
+                <section  class="registro-alojamiento-gestionar-btn" id="btnNavGestionar" >GESTIONAR
+                </section>    
+                <form id="formularioSeleccion">
+                    <label>selecione su alojamiento</label>
+                    <input>
+                    <button id="btnSeleccionUsuario" type="button">=></button>
+                </form>
             </div>
         </nav>
 
         <main>
             <form id="formularioRegistro">
-                <label for="imagen">Imagen del alojamiento (600x600 / Enlace a ubicacion en internet):</label>
-                <input type="url" id="imagen" name="imagen" required>
-                <p class="formulario-columna-info">1</p>
-                
-                <label for="cuit">CUIT del propietario (11 dígitos sin guiones):</label>
-                <input type="text" id="cuit" name="cuit" required pattern="\d{11}">
-                <p class="formulario-columna-info">1</p>
 
-                <label for="nombre">Nombre comercial del alojamiento (máx. 30 caracteres):</label>
-                <input type="text" id="nombre" name="nombre" required maxlength="30">
-                <p class="formulario-columna-info">1</p>
+                <input type="number" id="id" name="id" readonly pattern="\d{2}" class="quitar">
+
+                <label for="imagen">Imagen del alojamiento:</label>
+                <input type="file" id="imagen" accept="image/png, image/jpeg, image/webp" name="imagen" required>
+                <p class="formulario-columna-info">(600x600 /png, jpeg o webp)</p>
+                
+                <label for="cuit">CUIT del propietario:</label>
+                <input type="text" id="cuit" name="cuit" required pattern="\d{11}">
+                <p class="formulario-columna-info">(11 dígitos sin guiones)</p>
+
+                <label for="nombre">Nombre del alojamiento:</label>
+                <input type="text" id="nombre" name="nombre" required minlength="3" maxlength="30" pattern="[A-Z0-9\s\W]+">
+                <p class="formulario-columna-info">(Solo Mayusculas. / 3-30 caract.)</p>
 
                 <label for="web">Sitio web del alojamiento:</label>
-                <input type="url" id="web" name="web" required>
-                <p class="formulario-columna-info">1</p>
+                <input type="url" id="web" name="web">
+                <p class="formulario-columna-info">"(URL Válida ej. https//...)"</p>
 
                 <label for="telefono">Número telefónico de contacto:</label>
-                <input type="tel" id="telefono" name="telefono" required pattern="\+54\d{9,13}">
-                <p class="formulario-columna-info">1</p>
+                <input type="tel" id="telefono" name="telefono" required pattern="[1-3]\d{9}">
+                <p class="formulario-columna-info">(sin pais, 0 o 15)</p>
 
                 <label for="correo">Correo electrónico de contacto:</label>
                 <input type="email" id="correo" name="correo" required>
-                <p class="formulario-columna-info">1</p>
+                <p class="formulario-columna-info">(email válido)</p>
 
                 <label for="direccion">Dirección del alojamiento:</label>
-                <input type="text" id="direccion" name="direccion" required>
-                <p class="formulario-columna-info">1</p>
+                <input type="text" id="direccion" name="direccion" required minlength="3" maxlength="30" pattern="[A-Z0-9\s\W]+">
+                <p class="formulario-columna-info">(Solo Mayusculas. / 3-30 caract.)</p>
 
-                <label for="latitud">Latitud (ejemplo: -32.17000):</label>
+                <label for="latitud">Latitud:</label>
                 <input type="text" id="latitud" name="latitud" required pattern="-32\.1[6-8]\d{3}">
-                <p class="formulario-columna-info">1</p>
+                <p class="formulario-columna-info">(ej.:-32.17000 dentro de la localidad)</p>
 
-                <label for="longitud">Longitud (ejemplo: -64.77000):</label>
+                <label for="longitud">Longitud:</label>
                 <input type="text" id="longitud" name="longitud" required pattern="-64\.7[6-8]\d{3}">
-                <p class="formulario-columna-info">1</p>
-
-                <button id="btnEnviarRegistro" type="submit">Registrar Alojamiento</button>
+                <p class="formulario-columna-info">(ej.: -64.77000 dentro de la localidad)</p>
+                <button id="btnSubmitForm" type="submit">Registrar Alojamiento</button>
+                <button id="btnGestionEliminarAlojamiento" type="button">Eliminar Alojamiento</button>
             </form>
         </main>
         <footer class="footer">
-            BT Volver a pagina principal
+            <nav>
+                <a href="../index.html" id="navIrAlInicio" >
+                    Volver a la página principal
+                </a>
+            </nav>
         </footer>
     </div>
     <script src="../statics/js/registro-alojamientos.js"></script>
