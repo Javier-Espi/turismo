@@ -48,22 +48,24 @@
     justify-content: center;
 }
 
-.registro-alojamiento-gestionar {
+.menu-nav-section-registrar {
+	background-color: coral;
+    display: flex;
+    cursor: pointer    
+}
+
+
+.menu-nav-div-section-gestionar{
 	background-color: rgb(63, 40, 125);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    cursor: pointer
 }
 
-.registro-alojamiento-gestionar-btn {
-	background-color: coral;
-    display: flex;
-    
-}
-
-#formularioSeleccion {
-	background-color: rgb(63, 40, 125);
+.menu-nav-div-form-gestionar {
+	background-color: rgb(102, 101, 105);
     display: flex;
     align-items: center;
     justify-content: center;

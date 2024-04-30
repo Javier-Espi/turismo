@@ -1,20 +1,4 @@
-//  ****************************** pasar a carpeta reutilizables ************************
 
-function activaDesactivaClasePorId(id, clase, activado) {
-    let elemento = document.getElementById(id);
-    if (activado) {  
-        elemento.classList.add(clase);
-    } else {
-        elemento.classList.remove(clase);
-    };
-    };
-    // Si la idea es alternar entre el defoult y la opcion (quitar, ocultar o atenuar) esta funcion hace esa funcion
-    // si quiero ocultar un elemento por ID hago lo siguiente: alternarClase("id", "nombre_del_Id", "quitar") y
-    // se se ejecuta nuevamente esta vez la restablecera -en verdad deja el default que es inline-
-    // Esta opcion agrega la posibildad de alternar entre una class definida en css y no solo Id al fijar el o los objetivos
-    
-
-//  *******************************************************************************************
 
 function obtenerDatosAlojamientos() {
     return fetch('../statics/data/alojamientos-crud.json').then(response => response.json());
@@ -66,7 +50,6 @@ function actualizarListaAlojamientos() {
     function actualizarAlojamientoSeleccionadoPorId(id) {
         const removerClaseQuitar = document.querySelector('li.quitar');
         if (removerClaseQuitar) {
-            console.log("funciono quitar")
             removerClaseQuitar.classList.remove("quitar");
         };
 

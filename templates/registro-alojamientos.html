@@ -18,15 +18,16 @@
             </nav>
         </div>
         <nav class="menu-nav">
-            <section class="registro-alojamiento-registrarse-btn" id="btnNavRegistrar">REGISTRAR NUEVO
+            <section id="btnNavRegistrar" class="menu-nav-section-registrar">REGISTRAR NUEVO
             </section>
             <div class="registro-alojamiento-gestionar">
-                <section  class="registro-alojamiento-gestionar-btn" id="btnNavGestionar" >GESTIONAR
+                <section  id="btnNavGestionar" class="menu-nav-div-section-gestionar">GESTIONAR
                 </section>    
-                <form id="formularioSeleccion">
-                    <label>selecione su alojamiento</label>
-                    <input>
-                    <button id="btnSeleccionUsuario" type="button">=></button>
+                <form id="formularioSeleccion" class="menu-nav-div-form-gestionar" autocomplete="noAutocompletar">
+                    <label  id="labelSelectorGestionar" class="menu-nav-div-form-gestionar-label" for="SelectorGestionar">Selecione su alojamiento
+                    </label>
+                    <select id="selectorGestionar">
+                    </select>
                 </form>
             </div>
         </nav>
@@ -37,40 +38,31 @@
                 <input type="number" id="id" name="id" readonly pattern="\d{2}" class="quitar">
 
                 <label for="imagen">Imagen del alojamiento:</label>
-                <input type="file" id="imagen" accept="image/png, image/jpeg, image/webp" name="imagen" required>
-                <p class="formulario-columna-info">(600x600 /png, jpeg o webp)</p>
+                <input type="url" id="imagen" name="imagen" required placeholder="Link web a /png, jpeg o webp">
                 
                 <label for="cuit">CUIT del propietario:</label>
-                <input type="text" id="cuit" name="cuit" required pattern="\d{11}">
-                <p class="formulario-columna-info">(11 dígitos sin guiones)</p>
+                <input type="text" id="cuit" name="cuit" required pattern="\d{11}" placeholder="11 dígitos sin guiones">
 
                 <label for="nombre">Nombre del alojamiento:</label>
-                <input type="text" id="nombre" name="nombre" required minlength="3" maxlength="30" pattern="[A-Z0-9\s\W]+">
-                <p class="formulario-columna-info">(Solo Mayusculas. / 3-30 caract.)</p>
+                <input type="text" id="nombre" name="nombre" required minlength="3" maxlength="30" pattern="[A-Z0-9\s\W]+" placeholder="Solo Mayusculas. / 3-30 caract.">
 
                 <label for="web">Sitio web del alojamiento:</label>
-                <input type="url" id="web" name="web">
-                <p class="formulario-columna-info">"(URL Válida ej. https//...)"</p>
+                <input type="url" id="web" name="web" placeholder="URL Válida ej. https//...">
 
                 <label for="telefono">Número telefónico de contacto:</label>
-                <input type="tel" id="telefono" name="telefono" required pattern="[1-3]\d{9}">
-                <p class="formulario-columna-info">(sin pais, 0 o 15)</p>
+                <input type="tel" id="telefono" name="telefono" required pattern="[1-3]\d{9}" placeholder="Sin pais, 0 o 15">
 
                 <label for="correo">Correo electrónico de contacto:</label>
-                <input type="email" id="correo" name="correo" required>
-                <p class="formulario-columna-info">(email válido)</p>
+                <input type="email" id="correo" name="correo" required placeholder="email válido">
 
                 <label for="direccion">Dirección del alojamiento:</label>
-                <input type="text" id="direccion" name="direccion" required minlength="3" maxlength="30" pattern="[A-Z0-9\s\W]+">
-                <p class="formulario-columna-info">(Solo Mayusculas. / 3-30 caract.)</p>
+                <input type="text" id="direccion" name="direccion" required minlength="3" maxlength="30" pattern="[A-Z0-9\s\W]+" placeholder="Solo Mayusculas. / 3-30 caract.">
 
                 <label for="latitud">Latitud:</label>
-                <input type="text" id="latitud" name="latitud" required pattern="-32\.1[6-8]\d{3}">
-                <p class="formulario-columna-info">(ej.:-32.17000 dentro de la localidad)</p>
+                <input type="text" id="latitud" name="latitud" required pattern="-32\.1[6-8]\d{3}" placeholder="Ej.:-32.17000 dentro de la localidad">
 
                 <label for="longitud">Longitud:</label>
-                <input type="text" id="longitud" name="longitud" required pattern="-64\.7[6-8]\d{3}">
-                <p class="formulario-columna-info">(ej.: -64.77000 dentro de la localidad)</p>
+                <input type="text" id="longitud" name="longitud" required pattern="-64\.7[6-8]\d{3}" placeholder="Ej.: -64.77000 dentro de la localidad">
                 <button id="btnSubmitForm" type="submit">Registrar Alojamiento</button>
                 <button id="btnGestionEliminarAlojamiento" type="button">Eliminar Alojamiento</button>
             </form>
@@ -83,6 +75,7 @@
             </nav>
         </footer>
     </div>
-    <script src="../statics/js/registro-alojamientos.js"></script>
+    <script type="text/javascript" src="../statics/js/reutilizables.js"></script>
+    <script type="text/javascript" src="../statics/js/registro-alojamientos.js"></script>
 </body>
 </html>

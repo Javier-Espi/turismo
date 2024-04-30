@@ -1,30 +1,103 @@
-// **************  Funcionalidades Botones ***************
-const btnNavRegistrar = document.getElementById('btnNavRegistrar');
-btnNavRegistrar.addEventListener('click', function () {
-  console.log("Registrar");
-}, false,);
+function obtenerDatosAlojamientos() {
+  return fetch('../statics/data/alojamientos-crud.json').then(response => response.json());
+}
 
 
-const btnNavGestionar = document.getElementById('btnNavGestionar');
-btnNavGestionar.addEventListener('click', function () {
-  console.log("Gestionar");
-}, false,);
+  function cargarSelectorPorNombre() {
+    const listaNombresAlojamientos = ["Ver lista desplegable"]
+    obtenerDatosAlojamientos()
+      .then(data => {
+        data.forEach(alojamiento => {
+          listaNombresAlojamientos.push(alojamiento.nombre);
+        })
+        agregarSelectPorId('selectorGestionar', listaNombresAlojamientos);
+      })
+    .catch(error => console.error('Error al cargar lista del Seleccionador de alojamientos:', error)); 
+  }
 
-const btnSeleccionUsuario = document.getElementById('btnSeleccionUsuario');
-btnSeleccionUsuario.addEventListener('click', function () {
-  console.log("Selecionar");
-}, false,);
 
-const btnSubmitForm = document.getElementById('btnSubmitForm');
-btnSubmitForm.addEventListener('click', function () {
-  console.log("enviar");
-}, false,);
+  async function alojamientoSeleccionadoPorNombre(nombre) {
+    try {
+      const data = await obtenerDatosAlojamientos();
+      const alojamiento = data.find(aloj => aloj.nombre === nombre);
+      if (!alojamiento) {
+        throw new Error('Alojamiento no encontrado');
+      }
+      return alojamiento;
+    } catch (error) {
+      console.error('Error al buscar el alojamiento:', error);
+    }
+  }
 
-const btnGestionEliminarAlojamiento = document.getElementById('btnGestionEliminarAlojamiento');
-btnGestionEliminarAlojamiento.addEventListener('click', function () {
-  console.log("Borrar");
-}, false,);
 
+document.addEventListener('DOMContentLoaded', () => {
+  cargarSelectorPorNombre();
+
+  activaDesactivaClasePorId("formularioSeleccion","quitar",true); //funciona
+  activaDesactivaClasePorId("btnGestionEliminarAlojamiento","ocultar",true);
+  activaDesactivaClasePorId("formularioRegistro","ocultar",true);
+
+  const btnNavRegistrar = document.getElementById('btnNavRegistrar');
+  btnNavRegistrar.addEventListener('click', function () {
+    activaDesactivaClasePorId("btnNavGestionar","ocultar",true);
+    activaDesactivaClasePorId("formularioRegistro","ocultar",false);
+  }, false,);
+
+  const btnNavGestionar = document.getElementById('btnNavGestionar');
+  btnNavGestionar.addEventListener('click', function () {
+    activaDesactivaClasePorId("btnNavRegistrar","ocultar",true)
+    activaDesactivaClasePorId("formularioSeleccion","quitar",false);
+    activaDesactivaClasePorId("formularioRegistro","ocultar",false);
+    activaDesactivaClasePorId("btnGestionEliminarAlojamiento","ocultar",false);
+    document.getElementById("btnSubmitForm").textContent = "Modificar Alojamiento";
+  }, false,);
+
+  selectorGestionar.addEventListener("change", async () => {
+    if (selectorGestionar.value !== "Ver lista desplegable") {
+      try {
+        const alojamientoSel = await alojamientoSeleccionadoPorNombre(selectorGestionar.value);
+        console.log(alojamientoSel)
+        const id = document.getElementById('id');
+        //const imagen = document.getElementById('imagen');
+        const cuit = document.getElementById('cuit');
+        const nombre = document.getElementById('nombre');
+        const web = document.getElementById('web');
+        const telefono = document.getElementById('telefono');
+        const correo = document.getElementById('correo');
+        const direccion = document.getElementById('direccion');
+        const latitud = document.getElementById('latitud');
+        const longitud = document.getElementById('longitud');
+        id.value = alojamientoSel.id;
+        //imagen.value = alojamientoSel.imagen
+        cuit.value = alojamientoSel.cuit;
+        nombre.value = alojamientoSel.nombre;
+        web.value = alojamientoSel.web;
+        telefono.value = alojamientoSel.telefono;
+        correo.value = alojamientoSel.correo;
+        direccion.value = alojamientoSel.direccion;
+        latitud.value = alojamientoSel.coordenadas[0];
+        longitud.value = alojamientoSel.coordenadas[1];
+        // console.log(alojamientoSel)
+
+
+
+      } catch (error) {
+        console.error(error);
+      }
+    }
+  });
+
+  const btnSubmitForm = document.getElementById('btnSubmitForm');
+  btnSubmitForm.addEventListener('click', function () {
+    console.log("enviar");
+  }, false,);
+
+  const btnGestionEliminarAlojamiento = document.getElementById('btnGestionEliminarAlojamiento');
+  btnGestionEliminarAlojamiento.addEventListener('click', function () {
+    borrarDatos();
+  }, false,);
+
+});
 
 
 // ******  Validaciones y operaciones formulario y CRUD *****
@@ -105,8 +178,10 @@ function validarFormulario() {
 }
 
 
+// ******* ESTAS FUNCIONES ESTAN SOLO AL EFECTO DE SIMULAR LAS ACCIONES A REALIZAR EN UNA 2DA ETAPA *****
+
 function enviarDatos(formulario) {
-  alert("Los datos están siendo enviados al Servidor y serán verificados antes de subirse efectivamente a la página.");
+  window.alert("Los datos están siendo enviados al Servidor y serán verificados antes de subirse efectivamente a la página.");
   const data = new FormData(formulario);
   console.log(data)
 
@@ -116,4 +191,15 @@ function enviarDatos(formulario) {
 //      body: datos
 //    })
 //    .catch(error => console.error('Error:', error));
+}
+
+
+function borrarDatos() {
+  let advertencia = window.confirm ('Los datos de su alojamiento se borraran definitivamente, esta seguro de continuar?');
+  if(advertencia) {
+    window.alert('El alojamiento fue dado de baja con exito');
+    const irAtras =  document.getElementById('navIrAlojamientos');
+    console.log(irAtras)
+    irAtras.click();
+  }
 }
