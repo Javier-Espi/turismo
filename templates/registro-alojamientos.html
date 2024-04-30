@@ -33,17 +33,19 @@
         </nav>
 
         <main>
-            <form id="formularioRegistro">
-
+            <form id="formularioRegistro" > 
+                                            <!-- saco method=POST enctype=multipart/form-data -->
                 <input type="number" id="id" name="id" readonly pattern="\d{2}" class="quitar">
 
                 <label for="imagen">Imagen del alojamiento:</label>
-                <input type="url" id="imagen" name="imagen" required placeholder="Link web a /png, jpeg o webp">
-                
+                <input  id="imagen" type:"url" name="imagen" required placeholder="link arch. png, jpeg o webp Recomendado 600x600px">
+                <!-- saco type="file" accept="image/png, image/jpeg, image/webp y pongo url como tipo"-->
+
                 <label for="cuit">CUIT del propietario:</label>
                 <input type="text" id="cuit" name="cuit" required pattern="\d{11}" placeholder="11 dígitos sin guiones">
 
                 <label for="nombre">Nombre del alojamiento:</label>
+                 <!-- Tanto acá como en direccion no se si se pasa a BBDD soporta caracteres especiales..VER. -->
                 <input type="text" id="nombre" name="nombre" required minlength="3" maxlength="30" pattern="[A-Z0-9\s\W]+" placeholder="Solo Mayusculas. / 3-30 caract.">
 
                 <label for="web">Sitio web del alojamiento:</label>

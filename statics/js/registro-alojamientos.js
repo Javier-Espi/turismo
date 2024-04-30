@@ -3,17 +3,16 @@ function obtenerDatosAlojamientos() {
 }
 
 
-  function cargarSelectorPorNombre() {
-    const listaNombresAlojamientos = ["Ver lista desplegable"]
-    obtenerDatosAlojamientos()
-      .then(data => {
-        data.forEach(alojamiento => {
-          listaNombresAlojamientos.push(alojamiento.nombre);
-        })
-        agregarSelectPorId('selectorGestionar', listaNombresAlojamientos);
-      })
-    .catch(error => console.error('Error al cargar lista del Seleccionador de alojamientos:', error)); 
+async function cargarSelectorPorNombre() {
+  try {
+    const data = await obtenerDatosAlojamientos();
+    const listaNombresAlojamientos = data.map(alojamiento => alojamiento.nombre);
+    listaNombresAlojamientos.unshift("Ver lista desplegable"); // Para no dejar un alojamiento como default al inicio
+    agregarSelectPorId('selectorGestionar', listaNombresAlojamientos);
+  } catch (error) {
+    console.error('Error al cargar lista del Seleccionador de alojamientos:', error);
   }
+}
 
 
   async function alojamientoSeleccionadoPorNombre(nombre) {
@@ -30,102 +29,92 @@ function obtenerDatosAlojamientos() {
   }
 
 
-document.addEventListener('DOMContentLoaded', () => {
-  cargarSelectorPorNombre();
+  document.addEventListener('DOMContentLoaded', async () => {
+    try {
+      await cargarSelectorPorNombre();
 
-  activaDesactivaClasePorId("formularioSeleccion","quitar",true); //funciona
-  activaDesactivaClasePorId("btnGestionEliminarAlojamiento","ocultar",true);
-  activaDesactivaClasePorId("formularioRegistro","ocultar",true);
+    activaDesactivaClasePorId("formularioSeleccion","quitar",true);
+    activaDesactivaClasePorId("btnGestionEliminarAlojamiento","ocultar",true);
+    activaDesactivaClasePorId("formularioRegistro","ocultar",true);
 
-  const btnNavRegistrar = document.getElementById('btnNavRegistrar');
-  btnNavRegistrar.addEventListener('click', function () {
-    activaDesactivaClasePorId("btnNavGestionar","ocultar",true);
-    activaDesactivaClasePorId("formularioRegistro","ocultar",false);
-  }, false,);
+    const btnNavRegistrar = document.getElementById('btnNavRegistrar');
+    btnNavRegistrar.addEventListener('click', function () {
+      activaDesactivaClasePorId("btnNavGestionar","ocultar",true);
+      activaDesactivaClasePorId("formularioRegistro","ocultar",false);
+    }, false,);
 
-  const btnNavGestionar = document.getElementById('btnNavGestionar');
-  btnNavGestionar.addEventListener('click', function () {
-    activaDesactivaClasePorId("btnNavRegistrar","ocultar",true)
-    activaDesactivaClasePorId("formularioSeleccion","quitar",false);
-    activaDesactivaClasePorId("formularioRegistro","ocultar",false);
-    activaDesactivaClasePorId("btnGestionEliminarAlojamiento","ocultar",false);
-    document.getElementById("btnSubmitForm").textContent = "Modificar Alojamiento";
-  }, false,);
+    const btnNavGestionar = document.getElementById('btnNavGestionar');
+    btnNavGestionar.addEventListener('click', function () {
+      activaDesactivaClasePorId("btnNavRegistrar","ocultar",true)
+      activaDesactivaClasePorId("formularioSeleccion","quitar",false);
+      activaDesactivaClasePorId("formularioRegistro","ocultar",false);
+      activaDesactivaClasePorId("btnGestionEliminarAlojamiento","ocultar",false);
+      document.getElementById("btnSubmitForm").textContent = "Modificar Alojamiento";
+    }, false,);
 
-  selectorGestionar.addEventListener("change", async () => {
-    if (selectorGestionar.value !== "Ver lista desplegable") {
-      try {
-        const alojamientoSel = await alojamientoSeleccionadoPorNombre(selectorGestionar.value);
-        console.log(alojamientoSel)
-        const id = document.getElementById('id');
-        //const imagen = document.getElementById('imagen');
-        const cuit = document.getElementById('cuit');
-        const nombre = document.getElementById('nombre');
-        const web = document.getElementById('web');
-        const telefono = document.getElementById('telefono');
-        const correo = document.getElementById('correo');
-        const direccion = document.getElementById('direccion');
-        const latitud = document.getElementById('latitud');
-        const longitud = document.getElementById('longitud');
-        id.value = alojamientoSel.id;
-        //imagen.value = alojamientoSel.imagen
-        cuit.value = alojamientoSel.cuit;
-        nombre.value = alojamientoSel.nombre;
-        web.value = alojamientoSel.web;
-        telefono.value = alojamientoSel.telefono;
-        correo.value = alojamientoSel.correo;
-        direccion.value = alojamientoSel.direccion;
-        latitud.value = alojamientoSel.coordenadas[0];
-        longitud.value = alojamientoSel.coordenadas[1];
-        // console.log(alojamientoSel)
-
-
-
+    selectorGestionar.addEventListener("change", async () => {
+      if (selectorGestionar.value !== "Ver lista desplegable") {
+        try {
+          const alojamientoSel = await alojamientoSeleccionadoPorNombre(selectorGestionar.value);
+          console.log(alojamientoSel)
+          const id = document.getElementById('id');
+          //const imagen = document.getElementById('imagen'); //No sin servidor
+          const cuit = document.getElementById('cuit');
+          const nombre = document.getElementById('nombre');
+          const web = document.getElementById('web');
+          const telefono = document.getElementById('telefono');
+          const correo = document.getElementById('correo');
+          const direccion = document.getElementById('direccion');
+          const latitud = document.getElementById('latitud');
+          const longitud = document.getElementById('longitud');
+          id.value = alojamientoSel.id;
+          //imagen.value = alojamientoSel.imagen //No sin servidor
+          cuit.value = alojamientoSel.cuit;
+          nombre.value = alojamientoSel.nombre;
+          web.value = alojamientoSel.web;
+          telefono.value = alojamientoSel.telefono;
+          correo.value = alojamientoSel.correo;
+          direccion.value = alojamientoSel.direccion;
+          latitud.value = alojamientoSel.coordenadas[0];
+          longitud.value = alojamientoSel.coordenadas[1];
       } catch (error) {
         console.error(error);
       }
     }
   });
 
-  const btnSubmitForm = document.getElementById('btnSubmitForm');
-  btnSubmitForm.addEventListener('click', function () {
-    console.log("enviar");
-  }, false,);
-
   const btnGestionEliminarAlojamiento = document.getElementById('btnGestionEliminarAlojamiento');
   btnGestionEliminarAlojamiento.addEventListener('click', function () {
     borrarDatos();
   }, false,);
 
-});
-
-
-// ******  Validaciones y operaciones formulario y CRUD *****
-
-// Seleccionar el formulario
 const formulario = document.getElementById('formularioRegistro');
-
-// Evento DOMContentLoaded
-document.addEventListener('DOMContentLoaded', function() {
   formulario.addEventListener('submit', async function(event) {
     event.preventDefault();
-    await otrasValidaciones();
+    await otrasValidaciones(formulario);
   });
-});
 
-// Limitar la cantidad de archivos permitidos
-document.getElementById('imagen').addEventListener('change', function() {
-  const cantidadMaxArchivos = 1; 
-  if (this.files.length > cantidadMaxArchivos) {
-    alert('Solo puedes subir un máximo de ' + cantidadMaxArchivos + ' archivo/s.');
-    this.value = '';
+// Limitar la cantidad de archivos permitidos NO HASTA TENER SERVIDOR
+      // document.getElementById('imagen').addEventListener('change', function() {
+      //   const cantidadMaxArchivos = 1; 
+      //   if (this.files.length > cantidadMaxArchivos) {
+      //     alert('Solo puedes subir un máximo de ' + cantidadMaxArchivos + ' archivo/s.');
+      //     this.value = '';
+      //     }
+      //   });
+  } catch (error) {
+    console.error('Error al importar informacion del servidor:', error);
   }
 });
 
-async function otrasValidaciones() {
+
+async function otrasValidaciones(formulario) {
   try {
     const response = await fetch('../statics/data/alojamientos-crud.json');
     const datos = await response.json();
+    // Los alojamientos pueden tener ID de 10 a 90 en la segunda etapa seguramente
+    // se asignará en el sercidor, pero por ahora se busca el 1ro libre en JSON
+    // Este dato esta oculto y read-only para el usuario mientras se use desde acá
     const idsPosibles = Array.from({ length: 90 }, (_, i) => i + 10);
     datos.forEach(alojamiento => {
       const index = idsPosibles.indexOf(alojamiento.id);
@@ -181,9 +170,12 @@ function validarFormulario() {
 // ******* ESTAS FUNCIONES ESTAN SOLO AL EFECTO DE SIMULAR LAS ACCIONES A REALIZAR EN UNA 2DA ETAPA *****
 
 function enviarDatos(formulario) {
-  window.alert("Los datos están siendo enviados al Servidor y serán verificados antes de subirse efectivamente a la página.");
   const data = new FormData(formulario);
-  console.log(data)
+  console.log(data);
+  window.alert("Los datos están siendo enviados al Servidor y serán verificados antes de subirse efectivamente a la página.");
+  const irAtras =  document.getElementById('navIrAlojamientos');
+  irAtras.click();
+ 
 
       // *** PARA 2 TP ****
 //   fetch('../statics/data/alojamientos-crud3.json', {
@@ -199,7 +191,6 @@ function borrarDatos() {
   if(advertencia) {
     window.alert('El alojamiento fue dado de baja con exito');
     const irAtras =  document.getElementById('navIrAlojamientos');
-    console.log(irAtras)
     irAtras.click();
   }
 }
