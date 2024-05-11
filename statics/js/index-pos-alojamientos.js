@@ -25,7 +25,7 @@
             item.id = `alojamiento-id-${alojamiento.id}`
             item.innerHTML = `
                 <div class="alojamiento-item">
-                <img src="${alojamiento.imagen}" alt="" class="alojamiento-item-img">
+                <img src="${alojamiento.imagen}" alt="Imagen del Alojamiento" class="alojamiento-item-img">
                 <div class="alojamiento-item-detalle">
                     <p class="alojamiento-item-detalle-nombre">
                     <b>${alojamiento.nombre}</b>

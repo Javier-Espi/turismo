@@ -24,7 +24,7 @@
                 <section  id="btnNavGestionar" class="menu-nav-div-section-gestionar">GESTIONAR
                 </section>    
                 <form id="formularioSeleccion" class="menu-nav-div-form-gestionar" autocomplete="noAutocompletar">
-                    <label  id="labelSelectorGestionar" class="menu-nav-div-form-gestionar-label" for="SelectorGestionar">Selecione su alojamiento
+                    <label  id="labelSelectorGestionar" class="menu-nav-div-form-gestionar-label" for="selectorGestionar">Selecione su alojamiento
                     </label>
                     <select id="selectorGestionar">
                     </select>
@@ -38,9 +38,8 @@
                 <input type="number" id="id" name="id" readonly pattern="\d{2}" class="quitar">
 
                 <label for="imagen">Imagen del alojamiento:</label>
-                <input  id="imagen" type:"url" name="imagen" required placeholder="link arch. png, jpeg o webp Recomendado 600x600px">
-                <!-- saco type="file" accept="image/png, image/jpeg, image/webp y pongo url como tipo"-->
-
+                <input  id="imagen" type="file" accept="image/png, image/jpeg, image/webp" name="imagen" required placeholder="link arch. png, jpeg o webp Recomendado 600x600px">
+                
                 <label for="cuit">CUIT del propietario:</label>
                 <input type="text" id="cuit" name="cuit" required pattern="\d{11}" placeholder="11 dígitos sin guiones">
 
@@ -65,7 +64,7 @@
 
                 <label for="longitud">Longitud:</label>
                 <input type="text" id="longitud" name="longitud" required pattern="-64\.7[6-8]\d{3}" placeholder="Ej.: -64.77000 dentro de la localidad">
-                <button id="btnSubmitForm" type="submit">Registrar Alojamiento</button>
+                <button id="btnSubmitForm" type="button">Registrar Alojamiento</button>
                 <button id="btnGestionEliminarAlojamiento" type="button">Eliminar Alojamiento</button>
             </form>
         </main>

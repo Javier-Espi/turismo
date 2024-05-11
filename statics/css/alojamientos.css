@@ -18,7 +18,7 @@
 
 .menu-nav {
 	background-color: red;
-	min-height: 5vh;
+	min-height: 70px;
     display: flex;
 	text-align: center;
     align-items: center;
@@ -32,11 +32,19 @@
 .alojamiento-selected {
 	background-color:yellowgreen;
     display: flex;
+	flex-direction: column;
 	text-align: center;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
 	min-height: 450px;
+	
 }
+
+#bannerPorDefectoSeleccionado {
+	width: 300px;
+	height: 300px;
+}
+
 
 .alojamiento-selected-item {
 	display: grid;
@@ -153,16 +161,14 @@ main {
 		flex-direction: column;
 	}
 
-	.menu-nav {
-		min-height: 5%;
-	}
-
+	
 	.map {
 		min-height: 45vh;
 	}
 
 	.alojamiento-selected {
-		min-height: 45vh;
+		min-height: 50vh;
+		padding: 10px;
 	}
 
 	.alojamiento-selected-item-principal-img {

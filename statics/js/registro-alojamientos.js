@@ -15,8 +15,8 @@ function cargarSelectorPorNombre() {
 
 
   function alojamientoSeleccionadoPorNombre(nombre) {
-      const data = obtenerDatosAlojamientos();
-      const alojamiento = data.find(aloj => aloj.nombre === nombre);
+      let data = obtenerDatosAlojamientos();
+      let alojamiento = data.find(aloj => aloj.nombre === nombre);
       if (!alojamiento) {
         throw new Error('Alojamiento no encontrado');
       }
@@ -50,7 +50,6 @@ function cargarSelectorPorNombre() {
     selectorGestionar.addEventListener("change", () => {
       if (selectorGestionar.value !== "Ver lista desplegable") {
           const alojamientoSel = alojamientoSeleccionadoPorNombre(selectorGestionar.value);
-          console.log(alojamientoSel)
           const id = document.getElementById('id');
           //const imagen = document.getElementById('imagen'); //No sin servidor
           const cuit = document.getElementById('cuit');
@@ -80,20 +79,19 @@ function cargarSelectorPorNombre() {
     borrarDatos();
   }, false,);
 
-  const formulario = document.getElementById('formularioRegistro');
-  formulario.addEventListener('submit', (event) => {
-    event.preventDefault();
-    otrasValidaciones(formulario);
-  });
+  const btnSubmitForm = document.getElementById('btnSubmitForm');
+  btnSubmitForm.addEventListener('click',  function () {
+    otrasValidaciones();
+  }, false,);
 
-function otrasValidaciones(formulario) {
-    const datos = obtenerDatosAlojamientos();
+function otrasValidaciones() {
+    let datos = obtenerDatosAlojamientos();
     // Los alojamientos pueden tener ID de 10 a 90 en la segunda etapa seguramente
-    // se asignará en el sercidor, pero por ahora se busca el 1ro libre en JSON
+    // se asignará en el sercidor, pero por ahora se busca el 1ro libre en Local Storage
     // Este dato esta oculto y read-only para el usuario mientras se use desde acá
-    const idsPosibles = Array.from({ length: 90 }, (_, i) => i + 10);
+    let idsPosibles = Array.from({ length: 90 }, (_, i) => i + 10);
     datos.forEach(alojamiento => {
-      const index = idsPosibles.indexOf(alojamiento.id);
+      let index = idsPosibles.indexOf(alojamiento.id);
       if (index !== -1) {
         idsPosibles.splice(index, 1);
       }
@@ -103,11 +101,11 @@ function otrasValidaciones(formulario) {
       document.getElementById('id').value = idsPosibles[0];
     }
     // Validación de CUIT
-    const cuit = document.getElementById('cuit').value;
+    let cuit = document.getElementById('cuit').value;
     if (verificarCuit(cuit)) {
       const datosValidos = validarFormulario();
       if (datosValidos) {
-        enviarDatos(formulario);
+        enviarDatos();
       };
     } else {
       alert('El CUIT ingresado no es válido.');
@@ -141,24 +139,61 @@ function validarFormulario() {
 }
 
 
-// ******* ESTAS FUNCIONES ESTAN SOLO AL EFECTO DE SIMULAR LAS ACCIONES A REALIZAR EN UNA 2DA ETAPA *****
+// ******* ESTAS FUNCIONES ESTAN SOLO AL EFECTO DE SIMULAR LAS ACCIONES A REALIZAR EN UNA 2DA ETAPA AL TENER SERVIDOR *****
+function existeId(idBuscado) {
+  return alojamientosGuardados.some(alojamiento => alojamiento.id === idBuscado);
+}
 
-function enviarDatos(formulario) {
-  const formData = new FormData(formulario);
-  console.log(FormData);
-// aca armar la funcion
+function indexPorId(idBuscado) {
+  for (let i = 0; i < alojamientosGuardados.length; i++) {
+    if (alojamientosGuardados[i].id === idBuscado) {
+      return i;
+    }
+  }
+}
 
+
+function borroAlojamientoPorId(idBorrar) {
+  const indice = indexPorId(idBorrar);
+  if (indice !== -1) {
+    alojamientosGuardados.splice(indice, 1);
+    console.log("Alojamiento con ID " + idBorrar + " eliminado.");
+  } else {
+    console.log("No se encontró ningún alojamiento con el ID " + idBorrar);
+  }
+}
+
+function agregoAlojamientoAlRegistro(alojamiento) {
+  alojamientosGuardados.push(alojamiento);
+}
+
+
+
+function enviarDatos() {
+  const alojamientoParaIngresar = new Alojamiento(
+    id.value, "../statics/data/foto-a-verificar.jpeg", cuit.value, nombre.value,
+          web.value, telefono.value, correo.value,
+          direccion.value, latitud.value, longitud.value
+    );
+
+  if (existeId(parseInt(id.value, 10))) {
+   borroAlojamientoPorId(parseInt(id.value, 10));}
+  
+  agregoAlojamientoAlRegistro(alojamientoParaIngresar)
   window.alert("Los datos están siendo enviados al Servidor y serán verificados antes de subirse efectivamente a la página.");
+
+  localStorage.setItem('guardadoEnLocalStorage', JSON.stringify(alojamientosGuardados));
   const irAtras =  document.getElementById('navIrAlojamientos');
   irAtras.click();
 }
 
 
 function borrarDatos() {
-  let advertencia = window.confirm ('Los datos de su alojamiento se borraran definitivamente, esta seguro de continuar?');
-  if(advertencia) {
-    // poner funcion para borrar los datos del id o nombre select
-    window.alert('El alojamiento fue dado de baja con exito');
+  let advertencia = window.confirm('Los datos de su alojamiento se borrarán definitivamente, ¿está seguro de continuar?');
+  if (advertencia) {
+    borroAlojamientoPorId(parseInt(id.value, 10));
+    window.alert('El alojamiento fue dado de baja con éxito');
+    localStorage.setItem('guardadoEnLocalStorage', JSON.stringify(alojamientosGuardados));
     const irAtras =  document.getElementById('navIrAlojamientos');
     irAtras.click();
   };

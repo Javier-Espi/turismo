@@ -1,8 +1,26 @@
-alojamientosGuardados = [
+class Alojamiento {
+  constructor(id, imagen, cuit, nombre, web, telefono, correo, direccion, lat, long){
+    this.id = parseInt(id, 10);
+    this.imagen = imagen;
+    this.cuit = parseInt(cuit, 10);
+    this.nombre = nombre;
+    this.web = web;
+    this.telefono = parseInt(telefono, 10);
+    this.correo = correo;
+    this.direccion = direccion;
+    this.coordenadas = [lat, long];
+  }
+}
+
+var alojamientosEnMemoria = {}
+alojamientosEnMemoria = localStorage.getItem('guardadoEnLocalStorage');
+var alojamientosGuardados = {};
+if (alojamientosEnMemoria === null) {
+  alojamientosGuardados = [
     {
       "id": 10,
       "imagen": "../statics/data/Alojamiento.webp",
-      "cuit": 20024393968,
+      "cuit": 20024393969,
       "nombre": "LA CASA DEL BOSQUE 1",
       "web": "https://www.google.com.ar",
       "telefono": 1111111111,
@@ -17,7 +35,7 @@ alojamientosGuardados = [
       "id": 12,
       "imagen": "../statics/data/Alojamiento.webp",
       "cuit": 20028938471,
-      "nombre": "LA CASA DEL BOSQUE 2222222222",
+      "nombre": "LA CASA DEL BOSQUE 2",
       "web": "https://www.google.com.ar",
       "telefono": 1111111112,
       "correo": "bosque2@turismo.com.ar",
@@ -37,7 +55,7 @@ alojamientosGuardados = [
       "correo": "bosque3@turismo.com.ar",
       "direccion": "CALLE 3 Nº 123",
       "coordenadas": [
-        -32.171,
+        -32.17100,
         -64.77914
       ]
     },
@@ -79,7 +97,7 @@ alojamientosGuardados = [
       "correo": "bosque6@turismo.com.ar",
       "direccion": "CALLE 6 Nº 123",
       "coordenadas": [
-        -32.1702,
+        -32.17020,
         -64.77564
       ]
     },
@@ -122,7 +140,12 @@ alojamientosGuardados = [
       "direccion": "CALLE 9 Nº 123",
       "coordenadas": [
         -32.17177,
-        -64.7712
+        -64.77120
       ]
     }
-  ]
+  ];
+  
+  alojamientosEnMemoria = localStorage.setItem('guardadoEnLocalStorage', JSON.stringify(alojamientosGuardados))
+} else {
+  alojamientosGuardados = JSON.parse(alojamientosEnMemoria);
+}
