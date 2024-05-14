@@ -70,7 +70,6 @@ body {
 
 .menu-nav {
 	background-color: var(--destacado-r);
-	grid-column: 2/3;
 	min-height: 70px;
 	display: flex;
 	text-align: center;

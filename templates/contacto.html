@@ -9,7 +9,7 @@
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="../statics/css/style.css" type="text/css">
-    <link rel="stylesheet" href="../statics/css/atracciones.css" type="text/css">
+    <link rel="stylesheet" href="../statics/css/contacto.css" type="text/css">
     <title>Atracciones en "el Durazno", Cordoba Argentina</title>
 </head>
 <body>
@@ -23,16 +23,36 @@
         </div>
         <nav class="menu-nav">
             <a href="../index.html">Inicio</a>
+            <a href="../templates/atracciones.html">Atracciones</a>
             <a href="../templates/alojamientos.html">Alojamientos</a>
-            <a href="./templates/contacto.html">Pedir Información</a>
         </nav>
         <main>
-          <section class="atracciones-container">
-          
-
-
-          </section>
+            <form id="formularioPreferencias">
+                <div class="preferenciaEnvio">
+                    <label class="form-label">Como quiere le enviemos la información?: </label>
+                    <input type="radio" id="envioPorWa" name="envioPor" value="porWhatsapp" >Por Whatasapp.
+                    <input type="radio" id="envioPorEm" name="envioPor" value="porEmail" >Por Email.
+                </div>
+                <div class="preferenciaInfo">
+                    <label class="form-label">Seleccione sus preferencias de Información: </label>
+                    <input type="checkbox" id="infoGastronomia" name="infoGastronomia" value="infoGastronomia"> Gastronomia.
+                    <input type="checkbox" id="infoAtracciones" name="infoAtracciones" value="infoAtracciones"> Atracciones Turisticas.
+                    <input type="checkbox" id="infoAlojamientos" name="infoAlojamientos" value="infoAlojamientos"> Alojamientos.
+                </div>
+            </form>
+            <form id="formularioContacto">
+                <label for="nombre">Nombre del solicitante:</label>
+                <input type="text" id="nombre" name="nombre"  minlength="3" maxlength="30" pattern="[A-Z0-9\s\W]+" placeholder="Solo Mayusculas. / 3-30 caract.">
+                <label for="telefono">Número whatsapp:</label>
+                <input type="tel" id="telefono" name="telefono" pattern="[1-3]\d{9}" placeholder="Sin pais, 0 o 15">
+                <label for="correo">Correo electrónico de contacto:</label>
+                <input type="email" id="correo" name="correo" placeholder="email válido">
+                <label for="fecha">fecha de inicio de su viaje:</label>
+                <input type="date" id="fecha" name="direccion"  minlength="3" maxlength="30" pattern="[A-Z0-9\s\W]+" placeholder="Solo Mayusculas. / 3-30 caract.">
+                <button id="btnSubmitContacto" type="button">Pedir Información</button>
+            </form>
         </main>
+
         <footer class="footer">
           <div class="footer-logo">
             <img class="img-footer-logo" src="../statics/img/cba-logo.png" alt="Logo provincia de Córdoba (argentina)" />
@@ -59,8 +79,8 @@
           </div>
           <nav class="footer-links">
             <a href="../index.html">Inicio</a>
+            <a href="../templates/atracciones.html">Atracciones</a>
             <a href="../templates/alojamientos.html">Alojamientos</a>
-            <a href="./templates/contacto.html">Pedir Información</a>
           </nav>
         </footer>   
       </div>

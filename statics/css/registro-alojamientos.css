@@ -1,14 +1,21 @@
 
 .contenedor {
     height: 100vh;
+    display:grid;
 	grid-template-columns: 1fr 1fr 1fr 1fr;
 	grid-template-rows: 1fr 2fr 8fr 1fr;
 	}
 
 .top-container  {
-	grid-column: 1/5;
+	grid-column: 1/3;
     height: 15vh;
+    min-height: 120px;
 }
+
+
+.menu-nav {
+    grid-column: 3/5;
+  }
 
 .menu-nav-segundo {
 	grid-column: 1/5;
@@ -60,6 +67,7 @@ main {
 	background-color: var(--destacado-r);
     height: 55vh;
     min-height: 270px;
+    overflow: auto;
 }    
 
 #formularioRegistro {
@@ -141,4 +149,14 @@ input:invalid {
 
 input:valid {
     border: 3px solid var(--ok-color);
+}
+
+
+
+@media screen and (max-device-width: 650px) {
+
+    #btnGestionEliminarAlojamiento {
+        grid-column: 3/4;
+        max-width: 100px;
+    }
 }
