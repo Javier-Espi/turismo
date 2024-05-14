@@ -1,5 +1,17 @@
 
-/* FALTA PONER EL :root de colores Paleta completa */
+:root{
+    --neutro-n:black;
+	--neutro-b:white;
+
+	--destacado-v: #073229;
+	--principal-r: #b38471;
+	--destacado-r: #b73f10;
+	--principal-a: rgb(254, 245, 185);
+	--destacado-a: rgb(247, 219, 6);
+   
+    --error-color:#cc0b0e;
+	--ok-color:rgb(99, 173, 61);
+}
 
 * {
 	padding: 0;
@@ -8,12 +20,10 @@
 }
 
 body {
-	background: #d70981;
-	color: #fff;
+	background-color: var(--destacado-r);
+	color: var(--principal-a);
 	font-family: 'Roboto', sans-serif;
-
 }
-
 
 .ocultar {
     visibility: hidden;
@@ -25,4 +35,144 @@ body {
 
 .quitar {
     display: none !important;
+}
+
+.top-container {
+	display: flex;
+	align-items: center;
+	justify-content: space-evenly;
+  }
+	
+.logo-header {
+	height: 50px;
+	width: 150px;
+}
+  
+.titular-principal {
+	background-color: var(--destacado-r);
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	align-items: center;
+	justify-content: space-evenly;
+}
+
+.titular-principal h1 {
+	color: var(--destacado-v);
+	font-size: 35px;
+}
+
+.titular-principal h2 {
+	color: var(--neutro-b);
+	font-size: 15px;
+}
+
+
+.menu-nav {
+	background-color: var(--destacado-r);
+	grid-column: 2/3;
+	min-height: 70px;
+	display: flex;
+	text-align: center;
+	align-items: center;
+	justify-content: space-around;
+}
+
+.menu-nav a {
+	text-decoration: none;
+	color: var(--destacado-a);
+}
+
+.footer {
+    background-color: var(--destacado-v);
+    color: var(--neutro-v);
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+
+  .img-footer-logo{
+    height: 50px;
+    width: 150px;
+  }
+
+  .footer-contacto {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-around;
+	height: 50px;
+  }
+
+.footer-contacto-texto {
+  font-size: 13px;
+  text-align:center;
+  display: flex;
+  justify-content: center;
+}
+
+.footer-contacto-logos {
+width: 160px;
+display: flex;
+align-items: center;
+justify-content: space-between;
+}
+
+.footer-contacto-logos img {
+text-decoration: none;
+height: 20px;
+width: 20px;
+}
+
+.footer-links a {
+  text-decoration: none;
+  color: var(--destacado-a);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  }
+
+
+  
+
+@media screen and (max-device-width: 600px) {
+
+	.logo-header {
+		display: none;
+	}
+
+
+	.titular-principal h1 {
+		color: var(--destacado-v);
+		font-size: 30px;
+	}
+
+	.titular-principal h2 {
+		color: var(--neutro-b);
+		font-size: 15px;
+	}
+
+	
+	.menu-nav {
+		flex-direction: column;
+		justify-content: center;
+	}
+
+
+	.contenedor {
+		display: flex;
+		flex-direction: column;
+	}
+
+	.footer-contacto-texto {
+		flex-direction: column;
+	}
+}
+
+  
+@media screen and (max-device-width: 600px) {
+	.img-footer-logo{
+		display: none;
+	}
+
 }

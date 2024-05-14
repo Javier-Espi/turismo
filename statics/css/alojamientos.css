@@ -1,50 +1,49 @@
-
+body {
+	background-color: var(--destacado-r);
+}
 
 .contenedor {
-
-	background-color: rgb(88, 88, 96);
+	background-color: var(--destacado-r);
 	display: grid;
 	height: 100vh;
 	grid-template-columns: 1fr 1fr;
 	grid-template-rows: 1fr 8fr 8fr 1fr;
-	}
+}
 
 .titular-principal {
-	background-color: blue;
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .menu-nav {
-	background-color: red;
-	min-height: 70px;
-    display: flex;
-	text-align: center;
-    align-items: center;
-    justify-content: space-around;
-}
+	grid-column: 2/3;
+  }
 
 #map {
 	min-height: 700px;
-}
+	border-radius: 20px;
+	border: 10px solid var(--destacado-r);
+}	
 
 .alojamiento-selected {
-	background-color:yellowgreen;
+	background-color: var(--principal-r);
     display: flex;
 	flex-direction: column;
 	text-align: center;
     align-items: center;
     justify-content: space-evenly;
 	min-height: 450px;
-	
+	border-radius: 20px;
+	border: 10px solid var(--destacado-r);
 }
 
 #bannerPorDefectoSeleccionado {
+	border-radius: 50px;
+	border: 4px solid var(--destacado-r);
 	width: 300px;
 	height: 300px;
 }
-
 
 .alojamiento-selected-item {
 	display: grid;
@@ -60,8 +59,14 @@
 }
 
 .alojamiento-selected-item-principal-img {
+	border-radius: 50px;
+	border: 4px solid var(--destacado-r);
 	height: 300px;
 	width: 300px;
+}
+
+b {
+	color: var(--destacado-v);
 }
 
 .alojamiento-selected-item-detalle {
@@ -70,27 +75,41 @@
 	flex-direction: column;
 	flex-wrap: wrap;
 	gap: 5px;
+	text-decoration: none;
+	color: var(--destacado-a);
 	justify-content: center;
 	align-items: center;
+}
+
+.alojamiento-selected-item-detalle a {
+	text-decoration: none;
+	color: var(--principal-a);
 }
 
 main {
 	grid-column: 1/3;
 	grid-row: 3/4;
-	background-color: blueviolet;
 }
 
+
 .alojamiento-lista {
-	background-color: yellow;
+	border-radius: 20px;
+	border: 10px solid var(--destacado-r);
+	background-color: var(--principal-r);
 	display :flex;
 	flex-wrap: wrap;
 	gap: 5px;
 	justify-content: space-around;
 
-}	
+}
+
+ul {
+    list-style-type: none;
+}
+
 
 .alojamiento-lista-item {
-	background-color: rgb(226, 131, 174);
+	background-color: var(--principal-r);
 	width: 300px;
 	padding: 10px;
 	grid-column: 1/3;
@@ -110,6 +129,8 @@ main {
 }
 
 .alojamiento-item-img {
+	border-radius: 20px;
+	border: 4px solid var(--destacado-r);
 	height: 100px;
 	width: 100px;
 }
@@ -122,7 +143,11 @@ main {
 	gap: 5px;
 	max-width: 200px;
 	justify-content: center;
-	align-items: center;	
+	align-items: center;
+}
+.alojamiento-item-detalle a {
+	text-decoration: none;
+	color: var(--principal-a);
 }
 
 .alojamiento-item p, .alojamiento-selected-item p {
@@ -130,12 +155,8 @@ main {
 }
 	
 .footer {
-	background-color:black;
 	grid-column: 1/3;
 	grid-row: 4/5;
-    display: flex;
-    align-items: center;
-    justify-content: center;
 }
 
 @media screen and (max-device-width: 2050px) {
@@ -155,19 +176,19 @@ main {
 }
 
 
-@media screen and (max-device-width: 600px) {
-	.contenedor {
+@media screen and (max-device-width: 650px) {
+
+	.contenedor{
 		display: flex;
 		flex-direction: column;
 	}
-
 	
 	.map {
 		min-height: 45vh;
 	}
 
 	.alojamiento-selected {
-		min-height: 50vh;
+		min-height: 60vh;
 		padding: 10px;
 	}
 

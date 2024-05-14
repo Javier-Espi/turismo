@@ -3,21 +3,30 @@
 <head>
     <meta charset="UTF-8">
     <title>Formulario de Registro de Alojamiento</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../statics/css/style.css" type="text/css">
     <link rel="stylesheet" href="../statics/css/registro-alojamientos.css" type="text/css">
 </head>
 <body>
     <div class="contenedor">
-        <div class="contenedor-banner">
-            <header class="titular-principal">SOLO TITULARES DE ALOJAMIENTOS HABILITADOS  
+        
+        <div class="top-container">
+            <img class="logo-header" src="../statics/img/CORDOBA-logo.png" alt="Logo Municipio de Yacanto, Cordoba (argentina)" />
+            <header class="titular-principal">
+                <h1>PARAJE EL DURAZNO</h1>
+                <h2>"Solo titulares de alojamientos habilitados"</h2>  
             </header>
-            <nav class="menu-nav-ir-atras">
+            <nav class="menu-nav">
                 <a href="../templates/alojamientos.html" id="navIrAlojamientos" >
-                    Volver a Alojamientos
+                    Alojamientos
                 </a>
             </nav>
         </div>
-        <nav class="menu-nav">
+    
+      
+
+        <nav class="menu-nav-segundo">
             <section id="btnNavRegistrar" class="menu-nav-section-registrar">REGISTRAR NUEVO
             </section>
             <div class="registro-alojamiento-gestionar">
@@ -69,12 +78,34 @@
             </form>
         </main>
         <footer class="footer">
-            <nav>
-                <a href="../index.html" id="navIrAlInicio" >
-                    Volver a la página principal
+            <div class="footer-logo">
+              <img class="img-footer-logo" src="../statics/img/cba-logo.png" alt="Logo provincia de Córdoba (argentina)" />
+            </div>
+            <div class="footer-contacto">
+              <div class="footer-contacto-texto">
+                <span> Servicios al Turista: Calle 2 y 5. </span>
+                <span> Te.(322)55-5555 de 8-19 hs. </span>
+              </div>
+              <div class="footer-contacto-logos">
+                <a href="https://www.google.com.ar">
+                  <img class="img-footer-wa-icon" src="../statics/img/whatsapp.svg" alt="Whatsapp" />
                 </a>
-            </nav>
-        </footer>
+                <a href="https://www.google.com.ar">
+                  <img class="img-footer-arroba-icon" src="../statics/img/email.svg" alt="mail" />
+                </a>
+                <a href="https://www.google.com.ar">
+                  <img class="img-footer-facebook-icon" src="../statics/img/facebook.svg" alt="facebook" />
+                </a>
+                <a href="https://www.google.com.ar">
+                  <img class="img-footer-instagram-icon" src="../statics/img/instagram.svg" alt="instagram" />
+                </a>
+              </div>
+            </div>
+            <div class="footer-links">
+                <a href="../index.html">Inico</a>
+                <a href="../templates/atracciones.html">Atracciones</a>
+            </div>
+          </footer>   
     </div>
     <script type="text/javascript" src="../statics/data/alojamientos-crud.js"></script>
     <script type="text/javascript" src="../statics/js/reutilizables.js"></script>
