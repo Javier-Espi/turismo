@@ -1,39 +1,19 @@
 
 .contenedor {
-	background-color: rgb(88, 88, 96);
-	display: grid;
-	height: 100vh;
+    height: 100vh;
 	grid-template-columns: 1fr 1fr 1fr 1fr;
 	grid-template-rows: 1fr 2fr 8fr 1fr;
 	}
 
-.contenedor-banner {
+.top-container  {
 	grid-column: 1/5;
-    background-color: gainsboro;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-}
-    
-.titular-principal {
-    grid-column: 1/4;
-    background-color: blue;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    height: 15vh;
 }
 
-#btnIrAtras {
-    background-color: gold;
-    display: flex;
-	text-align: center;
-    align-items: center;
-    justify-content: space-around;
-}
-
-.menu-nav {
+.menu-nav-segundo {
 	grid-column: 1/5;
-	background-color: red;
+	background-color: var(--destacado-r);
+    height: 15vh;
 	min-height: 5vh;
     display: flex;
 	text-align: center;
@@ -42,21 +22,26 @@
 }
 
 .registro-alojamiento-registrarse-btn {
-	background-color: rgb(52, 17, 17);
     display: flex;
     align-items: center;
     justify-content: center;
 }
 
 .menu-nav-section-registrar {
-	background-color: coral;
+    background-color: var(--principal-a);
+    color: var(--destacado-v);
+    border-radius: 10px;
+	border: 2px solid var(--destacado-v);
     display: flex;
     cursor: pointer    
 }
 
 
 .menu-nav-div-section-gestionar{
-	background-color: rgb(63, 40, 125);
+    background-color: var(--principal-a);
+    color: var(--destacado-v);
+	border-radius: 10px;
+	border: 2px solid var(--destacado-v);
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -65,7 +50,6 @@
 }
 
 .menu-nav-div-form-gestionar {
-	background-color: rgb(102, 101, 105);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -73,20 +57,25 @@
 
 main {
     grid-column: 1/5;
-	background-color: yellow;
+	background-color: var(--destacado-r);
+    height: 55vh;
+    min-height: 270px;
 }    
 
 #formularioRegistro {
-	background-color: black;
+	background-color: var(--destacado-r);
     display: grid;
 	grid-template-columns: 1fr 1fr 1fr 1fr;
     }
 
 
 label {
-    font-size: smaller;
-	background-color: blue;
-    grid-column: 1/3;
+    font-size: 13px;
+    background-color: var(--destacado-v);
+    color: var(--principal-a);
+	border-radius: 10px;
+	border: 2px solid var(--destacado-v);
+    grid-column: 2/3;
     display: flex;
     flex-direction: column;
     text-align: center;
@@ -96,8 +85,11 @@ label {
 }
 
 input {
-    font-size: smaller;
-	background-color: rgb(188, 47, 124);
+    font-size: 13px;
+    background-color: var(--principal-a);
+    color: var(--neutro-n);
+	border-radius: 10px;
+	border: 2px solid var(--destacado-v);
     grid-column: 3/4;
     display: flex;
     flex-direction: column;
@@ -107,19 +99,13 @@ input {
     margin: 2px
 }
 
-.formulario-columna-info {
-    font-size: smaller;
-    background-color:rgb(39, 53, 11);
-    grid-column: 4/5;
-    flex-direction: column;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-
-}
 
 #btnSubmitForm {
-    grid-column: 1/4;
+    grid-column: 2/3;
+    background-color: var(--principal-a);
+    color: var(--neutro-n);
+	border-radius: 10px;
+	border: 2px solid var(--destacado-v);
     display: flex;
     text-align: center;
     align-items: center;
@@ -130,6 +116,10 @@ input {
 
 #btnGestionEliminarAlojamiento {
     grid-column: 4/5;
+    background-color: var(--principal-r);
+    color: var(--neutro-n);
+	border-radius: 10px;
+	border: 2px solid var(--destacado-v);
     display: flex;
     text-align: center;
     align-items: center;
@@ -140,18 +130,15 @@ input {
 
 
 footer {
-	background-color:rgb(21, 98, 130);
 	grid-column: 1/5;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
+    height: 15vh;
+    min-height: 55px;
 }
 
 input:invalid {
-    border: 3px solid red;
+    border: 3px solid var(--error-color);
 }
 
 input:valid {
-    border: 3px solid green;
+    border: 3px solid var(--ok-color);
 }
