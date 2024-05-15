@@ -23,11 +23,11 @@ if (alojamientosEnMemoria === null) {
       "id": 10,
       "imagen": "../statics/data/10.webp",
       "cuit": 20024393969,
-      "nombre": "LA CASA DEL BOSQUE 1",
+      "nombre": "La Casa del Bosque",
       "web": "https://www.google.com.ar",
       "telefono": 1111111111,
       "correo": "bosque1@turismo.com.ar",
-      "direccion": "CALLE 1 Nº 123",
+      "direccion": "Calle 1 Nº 123",
       "coordenadas": [
         -32.17222,
         -64.77706
@@ -37,11 +37,11 @@ if (alojamientosEnMemoria === null) {
       "id": 12,
       "imagen": "../statics/data/12.webp",
       "cuit": 20028938471,
-      "nombre": "LA CASA DEL BOSQUE 2",
+      "nombre": "Duendes II",
       "web": "https://www.google.com.ar",
       "telefono": 1111111112,
       "correo": "bosque2@turismo.com.ar",
-      "direccion": "CALLE 2 Nº 123",
+      "direccion": "Calle 2 Nº 123",
       "coordenadas": [
         -32.16583,
         -64.77396
@@ -51,11 +51,11 @@ if (alojamientosEnMemoria === null) {
       "id": 13,
       "imagen": "../statics/data/13.webp",
       "cuit": 20042507157,
-      "nombre": "LA CASA DEL BOSQUE 3",
+      "nombre": "Kamalumpula",
       "web": "https://www.google.com.ar",
       "telefono": 1111111113,
       "correo": "bosque3@turismo.com.ar",
-      "direccion": "CALLE 3 Nº 123",
+      "direccion": "Calle 3 Nº 123",
       "coordenadas": [
         -32.17100,
         -64.77914
@@ -65,11 +65,11 @@ if (alojamientosEnMemoria === null) {
       "id": 14,
       "imagen": "../statics/data/14.webp",
       "cuit": 20043573579,
-      "nombre": "LA CASA DEL BOSQUE 4",
+      "nombre": "El viejo Algarrobo",
       "web": "https://www.google.com.ar",
       "telefono": 1111111114,
       "correo": "bosque4@turismo.com.ar",
-      "direccion": "CALLE 4 Nº 123",
+      "direccion": "Calle 4 Nº 123",
       "coordenadas": [
         -32.17224,
         -64.77704
@@ -79,11 +79,11 @@ if (alojamientosEnMemoria === null) {
       "id": 15,
       "imagen": "../statics/data/15.webp",
       "cuit": 20043817818,
-      "nombre": "LA CASA DEL BOSQUE 5",
+      "nombre": "El Campito",
       "web": "https://www.google.com.ar",
       "telefono": 1111111115,
       "correo": "bosque5@turismo.com.ar",
-      "direccion": "CALLE 5 Nº 123",
+      "direccion": "Calle 5 Nº 123",
       "coordenadas": [
         -32.16995,
         -64.77566
@@ -93,11 +93,11 @@ if (alojamientosEnMemoria === null) {
       "id": 16,
       "imagen": "../statics/data/16.webp",
       "cuit": 20044390680,
-      "nombre": "LA CASA DEL BOSQUE 6",
+      "nombre": "Renata",
       "web": "https://www.google.com.ar",
       "telefono": 1111111116,
       "correo": "bosque6@turismo.com.ar",
-      "direccion": "CALLE 6 Nº 123",
+      "direccion": "Calle 6 Nº 123",
       "coordenadas": [
         -32.17020,
         -64.77564
@@ -107,11 +107,11 @@ if (alojamientosEnMemoria === null) {
       "id": 17,
       "imagen": "../statics/data/17.webp",
       "cuit": 20044705606,
-      "nombre": "LA CASA DEL BOSQUE 7",
+      "nombre": "El palacio",
       "web": "https://www.google.com.ar",
       "telefono": 1111111117,
       "correo": "bosque7@turismo.com.ar",
-      "direccion": "CALLE 7 Nº 123",
+      "direccion": "Calle 7 Nº 123",
       "coordenadas": [
         -32.17167,
         -64.76835
@@ -121,11 +121,11 @@ if (alojamientosEnMemoria === null) {
       "id": 18,
       "imagen": "../statics/data/18.webp",
       "cuit": 20044775191,
-      "nombre": "LA CASA DEL BOSQUE 8",
+      "nombre": "Casa del Río 8",
       "web": "https://www.google.com.ar",
       "telefono": 1111111118,
       "correo": "bosque8@turismo.com.ar",
-      "direccion": "CALLE 8 Nº 123",
+      "direccion": "Calle 8 Nº 123",
       "coordenadas": [
         -32.17246,
         -64.77444
@@ -135,11 +135,11 @@ if (alojamientosEnMemoria === null) {
       "id": 19,
       "imagen": "../statics/data/19.webp",
       "cuit": 20045445934,
-      "nombre": "LA CASA DEL BOSQUE 9",
+      "nombre": "La Nueva",
       "web": "https://www.google.com.ar",
       "telefono": 1111111119,
       "correo": "bosque9@turismo.com.ar",
-      "direccion": "CALLE 9 Nº 123",
+      "direccion": "Calle 9 Nº 123",
       "coordenadas": [
         -32.17177,
         -64.77120
