@@ -12,9 +12,10 @@ function activaDesactivaClasePorId(id, clase, activado) {
     };
     };
 
-
-    
-
+    function detectarEstadoEnClick(cb) {
+        return cb.checked;
+    }
+ 
     function haceArraySelectHTML(lista) {
         let dataListHTML = ""
         for (let elemento of lista) { dataListHTML += '<option value="' + elemento + '">'+ elemento + "</option>"}

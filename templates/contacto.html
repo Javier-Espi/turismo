@@ -15,14 +15,14 @@
 <body>
     <div class="contenedor">
         <div class="top-container">
-          <img class="logo-header" src="../statics/img/CORDOBA-logo.png" alt="Logo Municipio de Yacanto, Cordoba (argentina)" />
+          <img class="logo-header" src="../statics/img/CORDOBA-logo.png" alt="Logo Municipio de Yacanto, Cordoba (argentina)">
           <header class="titular-principal">
             <h1>PARAJE EL DURAZNO</h1>
              <h2>"Viví Córdoba, viví Argentina"</h2>  
           </header>
         </div>
         <nav class="menu-nav">
-            <a href="../index.html">Inicio</a>
+            <a id="irInicio" href="../index.html">Inicio</a>
             <a href="../templates/atracciones.html">Atracciones</a>
             <a href="../templates/alojamientos.html">Alojamientos</a>
         </nav>
@@ -30,7 +30,7 @@
             <form id="formularioPreferencias">
                 <div class="preferenciaEnvio">
                     <label class="form-label">Como quiere le enviemos la información?: </label>
-                    <input type="radio" id="envioPorWa" name="envioPor" value="porWhatsapp" >Por Whatasapp.
+                    <input type="radio" id="envioPorWa" name="envioPor" value="porWhatsapp" checked>Por Whatasapp.
                     <input type="radio" id="envioPorEm" name="envioPor" value="porEmail" >Por Email.
                 </div>
                 <div class="preferenciaInfo">
@@ -48,14 +48,14 @@
                 <label for="correo">Correo electrónico de contacto:</label>
                 <input type="email" id="correo" name="correo" placeholder="email válido">
                 <label for="fecha">fecha de inicio de su viaje:</label>
-                <input type="date" id="fecha" name="direccion"  minlength="3" maxlength="30" pattern="[A-Z0-9\s\W]+" placeholder="Solo Mayusculas. / 3-30 caract.">
-                <button id="btnSubmitContacto" type="button">Pedir Información</button>
+                <input type="date" id="fecha" name="fecha">
+                <button id="btnSubmitContacto" type="submit">Pedir Información</button>
             </form>
         </main>
 
         <footer class="footer">
           <div class="footer-logo">
-            <img class="img-footer-logo" src="../statics/img/cba-logo.png" alt="Logo provincia de Córdoba (argentina)" />
+            <img class="img-footer-logo" src="../statics/img/cba-logo.png" alt="Logo provincia de Córdoba (argentina)">
           </div>
           <div class="footer-contacto">
             <div class="footer-contacto-texto">
@@ -64,16 +64,16 @@
             </div>
             <div class="footer-contacto-logos">
               <a href="https://www.google.com.ar">
-                <img class="img-footer-wa-icon" src="../statics/img/whatsapp.svg" alt="Whatsapp" />
+                <img class="img-footer-wa-icon" src="../statics/img/whatsapp.svg" alt="Whatsapp">
               </a>
               <a href="https://www.google.com.ar">
-                <img class="img-footer-arroba-icon" src="../statics/img/email.svg" alt="mail" />
+                <img class="img-footer-arroba-icon" src="../statics/img/email.svg" alt="mail">
               </a>
               <a href="https://www.google.com.ar">
-                <img class="img-footer-facebook-icon" src="../statics/img/facebook.svg" alt="facebook" />
+                <img class="img-footer-facebook-icon" src="../statics/img/facebook.svg" alt="facebook">
               </a>
               <a href="https://www.google.com.ar">
-                <img class="img-footer-instagram-icon" src="../statics/img/instagram.svg" alt="instagram" />
+                <img class="img-footer-instagram-icon" src="../statics/img/instagram.svg" alt="instagram">
               </a>
             </div>
           </div>
@@ -84,6 +84,7 @@
           </nav>
         </footer>   
       </div>
-    <script type="text/javascript" src="../statics/js/atracciones.js"></script>
+      <script src="../statics/js/reutilizables.js"></script>
+    <script src="../statics/js/contacto.js"></script>
 </body>
 </html>

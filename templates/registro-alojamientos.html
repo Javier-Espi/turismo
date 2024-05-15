@@ -11,7 +11,7 @@
 <body>
     <div class="contenedor">     
         <div class="top-container">
-            <img class="logo-header" src="../statics/img/CORDOBA-logo.png" alt="Logo Municipio de Yacanto, Cordoba (argentina)" />
+            <img class="logo-header" src="../statics/img/CORDOBA-logo.png" alt="Logo Municipio de Yacanto, Cordoba (argentina)">
             <header class="titular-principal">
                 <h1>PARAJE EL DURAZNO</h1>
                 <h2>"Solo titulares de alojamientos habilitados"</h2>  
@@ -20,15 +20,15 @@
         <nav class="menu-nav">
           <a href="../index.html">Inico</a>
           <a href="../templates/atracciones.html">Atracciones</a>
-          <a href="../templates/alojamientos.html">Alojamientos</a>
+          <a id= "navIrAlojamientos" href="../templates/alojamientos.html">Alojamientos</a>
         </nav>
         <nav class="menu-nav-segundo">
-            <section id="btnNavRegistrar" class="menu-nav-section-registrar">REGISTRAR NUEVO
-            </section>
+            <div id="btnNavRegistrar" class="menu-nav-section-registrar">REGISTRAR NUEVO
+            </div>
             <div class="registro-alojamiento-gestionar">
-                <section  id="btnNavGestionar" class="menu-nav-div-section-gestionar">GESTIONAR
-                </section>    
-                <form id="formularioSeleccion" class="menu-nav-div-form-gestionar" autocomplete="noAutocompletar">
+                <div  id="btnNavGestionar" class="menu-nav-div-section-gestionar">GESTIONAR
+                </div>    
+                <form id="formularioSeleccion" class="menu-nav-div-form-gestionar">
                     <label  id="labelSelectorGestionar" class="menu-nav-div-form-gestionar-label" for="selectorGestionar">Selecione su alojamiento
                     </label>
                     <select id="selectorGestionar">
@@ -40,10 +40,10 @@
         <main>
             <form id="formularioRegistro" > 
                                             <!-- saco method=POST enctype=multipart/form-data -->
-                <input type="number" id="id" name="id" readonly pattern="\d{2}" class="quitar">
+                <input type="number" id="id" name="id" class="quitar">
 
                 <label for="imagen">Imagen del alojamiento:</label>
-                <input  id="imagen" type="file" accept="image/png, image/jpeg, image/webp" name="imagen" required placeholder="link arch. png, jpeg o webp Recomendado 600x600px">
+                <input  id="imagen" type="file" accept="image/png, image/jpeg, image/webp" name="imagen" required>
                 
                 <label for="cuit">CUIT del propietario:</label>
                 <input type="text" id="cuit" name="cuit" required pattern="\d{11}" placeholder="11 dígitos sin guiones">
@@ -75,7 +75,7 @@
         </main>
         <footer class="footer">
             <div class="footer-logo">
-              <img class="img-footer-logo" src="../statics/img/cba-logo.png" alt="Logo provincia de Córdoba (argentina)" />
+              <img class="img-footer-logo" src="../statics/img/cba-logo.png" alt="Logo provincia de Córdoba (argentina)">
             </div>
             <div class="footer-contacto">
               <div class="footer-contacto-texto">
@@ -84,16 +84,16 @@
               </div>
               <div class="footer-contacto-logos">
                 <a href="https://www.google.com.ar">
-                  <img class="img-footer-wa-icon" src="../statics/img/whatsapp.svg" alt="Whatsapp" />
+                  <img class="img-footer-wa-icon" src="../statics/img/whatsapp.svg" alt="Whatsapp">
                 </a>
                 <a href="https://www.google.com.ar">
-                  <img class="img-footer-arroba-icon" src="../statics/img/email.svg" alt="mail" />
+                  <img class="img-footer-arroba-icon" src="../statics/img/email.svg" alt="mail">
                 </a>
                 <a href="https://www.google.com.ar">
-                  <img class="img-footer-facebook-icon" src="../statics/img/facebook.svg" alt="facebook" />
+                  <img class="img-footer-facebook-icon" src="../statics/img/facebook.svg" alt="facebook">
                 </a>
                 <a href="https://www.google.com.ar">
-                  <img class="img-footer-instagram-icon" src="../statics/img/instagram.svg" alt="instagram" />
+                  <img class="img-footer-instagram-icon" src="../statics/img/instagram.svg" alt="instagram">
                 </a>
               </div>
             </div>
@@ -104,8 +104,8 @@
             </nav>
           </footer>   
     </div>
-    <script type="text/javascript" src="../statics/data/alojamientos-crud.js"></script>
-    <script type="text/javascript" src="../statics/js/reutilizables.js"></script>
-    <script type="text/javascript" src="../statics/js/registro-alojamientos.js"></script>
+    <script src="../statics/data/alojamientos-crud.js"></script>
+    <script src="../statics/js/reutilizables.js"></script>
+    <script src="../statics/js/registro-alojamientos.js"></script>
 </body>
 </html>

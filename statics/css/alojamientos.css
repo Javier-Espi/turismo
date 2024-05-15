@@ -26,6 +26,11 @@ body {
 	border: 10px solid var(--destacado-r);
 }	
 
+section h2 {
+	color: var(--destacado-a);
+	font-size: 15px;
+}
+
 .alojamiento-selected {
 	background-color: var(--principal-r);
     display: flex;
@@ -134,7 +139,6 @@ ul {
 	height: 100px;
 	width: 100px;
 }
-
 
 .alojamiento-item-detalle {
 	display :flex;

@@ -166,12 +166,18 @@ width: 20px;
 	.footer-contacto-texto {
 		flex-direction: column;
 	}
-}
 
-  
-@media screen and (max-device-width: 600px) {
 	.img-footer-logo{
 		display: none;
 	}
 
+}
+
+
+  
+@media screen and (max-device-width: 950px) {
+	.menu-nav {
+		flex-direction: column;
+		justify-content: center;
+	}
 }

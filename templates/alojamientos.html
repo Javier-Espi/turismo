@@ -8,7 +8,7 @@
     <!-- Estilos para funcionamiento mapas leaflet -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
     integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
-    crossorigin=""/>
+    crossorigin="">
     <!-- Js de Mapa Leaflet Asegurarse de ponerlo despues del Leaflet.CSS sino falla -->
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
@@ -22,7 +22,7 @@
 <body>
     <div class="contenedor">
         <div class="top-container">
-            <img class="logo-header" src="../statics/img/CORDOBA-logo.png" alt="Logo Municipio de Yacanto, Cordoba (argentina)" />
+            <img class="logo-header" src="../statics/img/CORDOBA-logo.png" alt="Logo Municipio de Yacanto, Cordoba (argentina)">
             <header class="titular-principal">
               <h1>PARAJE EL DURAZNO</h1>
                <h2>"Viví Córdoba, viví Argentina"</h2>  
@@ -32,21 +32,24 @@
             <a href="../templates/registro-alojamientos.html   ">INGRESA AQUÍ</a>
         </nav>
         <section class="map-container">
+            <h2 class="quitar" >Mapa de la zona del paraje El Durazno, Córdoba, Argentina</h2>
             <div id="map"></div>
-            <script type="text/javascript" src="../statics/js/pre-alojamientos.js"></script>
+            <script src="../statics/js/pre-alojamientos.js"></script>
         </section>
-        <section class="alojamiento-selected">SELECCIONE UN ALOJAMIENTO EN EL MAPA O LA LISTA
+        <section class="alojamiento-selected">
+          <h2>SELECCIONE UN ALOJAMIENTO EN EL MAPA O EN LA LISTA</h2>
             <img id="bannerPorDefectoSeleccionado" src="../statics/img/Alojamientos/banner-defecto-seleccionado.jpg" alt="Alojamiento Seleccionado">
         </section>
         <main>
             <section class="cont-alojamientos">
+                <h2 class="quitar" >Listado de Alojameintos en El Durazno Cordoba, Argentina</h2>
                 <ul class= "alojamiento-lista">
                 </ul>
             </section>
         </main>
         <footer class="footer">
             <div class="footer-logo">
-              <img class="img-footer-logo" src="../statics/img/cba-logo.png" alt="Logo provincia de Córdoba (argentina)" />
+              <img class="img-footer-logo" src="../statics/img/cba-logo.png" alt="Logo provincia de Córdoba (argentina)">
             </div>
             <div class="footer-contacto">
               <div class="footer-contacto-texto">
@@ -55,16 +58,16 @@
               </div>
               <div class="footer-contacto-logos">
                 <a href="https://www.google.com.ar">
-                  <img class="img-footer-wa-icon" src="../statics/img/whatsapp.svg" alt="Whatsapp" />
+                  <img class="img-footer-wa-icon" src="../statics/img/whatsapp.svg" alt="Whatsapp">
                 </a>
                 <a href="https://www.google.com.ar">
-                  <img class="img-footer-arroba-icon" src="../statics/img/email.svg" alt="mail" />
+                  <img class="img-footer-arroba-icon" src="../statics/img/email.svg" alt="mail">
                 </a>
                 <a href="https://www.google.com.ar">
-                  <img class="img-footer-facebook-icon" src="../statics/img/facebook.svg" alt="facebook" />
+                  <img class="img-footer-facebook-icon" src="../statics/img/facebook.svg" alt="facebook">
                 </a>
                 <a href="https://www.google.com.ar">
-                  <img class="img-footer-instagram-icon" src="../statics/img/instagram.svg" alt="instagram" />
+                  <img class="img-footer-instagram-icon" src="../statics/img/instagram.svg" alt="instagram">
                 </a>
               </div>
             </div>
@@ -74,9 +77,9 @@
               <a href="./templates/contacto.html">Pedir Información</a>
             </nav>
           </footer>   
-    </div>
-    <script type="text/javascript" src="../statics/data/alojamientos-crud.js"></script>
-    <script type="text/javascript" src="../statics/js/reutilizables.js"></script>
-    <script type="text/javascript" src="../statics/js/pos-alojamientos.js"></script>
+    </div>type="text/javascript"
+    <script src="../statics/data/alojamientos-crud.js"></script>
+    <script src="../statics/js/reutilizables.js"></script>
+    <script src="../statics/js/pos-alojamientos.js"></script>
 </body>
 </html>

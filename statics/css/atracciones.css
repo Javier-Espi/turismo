@@ -14,15 +14,45 @@
 .menu-nav {
 	grid-column: 2/3;
 }
+ main{
+  grid-column: 1/3 ;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+ }
+main h1 {
+  color: var(--destacado-a);
+  text-align: center;
+}
 
-main {
-    background-color: var(--principal-r);
-    grid-column: 1/3;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin: 0;
+main h2 {
+  margin: 20px;
+  text-align: start;
+}
+
+main div {
+  background-color: var(--principal-r);
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 600px;
+  justify-content: center;
+  
+}
+ 
+  main p {
+    text-align: justify;
+    width: 250px;
+    margin: 20px;
   }
+
+.fotosAtracciones {
+  height: 250px;
+  width: 250px;
+  margin: 20px;
+}
+
 
 .footer{
   grid-column: 1/3;
@@ -32,4 +62,16 @@ main {
   .atracciones-container {
     display: flex;
     width: 90vw;
+  }
+
+  
+  @media (max-width: 600px) {
+    main div {
+     flex-wrap: nowrap;
+     flex-direction: column;
+    }
+
+    main h2 {
+      text-align: center;
+    }
   }

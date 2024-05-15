@@ -39,6 +39,8 @@
     color: var(--destacado-v);
     border-radius: 10px;
 	border: 2px solid var(--destacado-v);
+    width: 200px;
+    justify-content: center;
     display: flex;
     cursor: pointer    
 }
@@ -50,6 +52,7 @@
 	border-radius: 10px;
 	border: 2px solid var(--destacado-v);
     display: flex;
+    width: 200px;
     flex-direction: column;
     align-items: center;
     justify-content: center;

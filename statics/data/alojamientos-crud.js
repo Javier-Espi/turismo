@@ -19,7 +19,7 @@ if (alojamientosEnMemoria === null) {
   alojamientosGuardados = [
     {
       "id": 10,
-      "imagen": "../statics/data/Alojamiento.webp",
+      "imagen": "../statics/data/10.webp",
       "cuit": 20024393969,
       "nombre": "LA CASA DEL BOSQUE 1",
       "web": "https://www.google.com.ar",
@@ -33,7 +33,7 @@ if (alojamientosEnMemoria === null) {
     },
     {
       "id": 12,
-      "imagen": "../statics/data/Alojamiento.webp",
+      "imagen": "../statics/data/12.webp",
       "cuit": 20028938471,
       "nombre": "LA CASA DEL BOSQUE 2",
       "web": "https://www.google.com.ar",
@@ -47,7 +47,7 @@ if (alojamientosEnMemoria === null) {
     },
     {
       "id": 13,
-      "imagen": "../statics/data/Alojamiento.webp",
+      "imagen": "../statics/data/13.webp",
       "cuit": 20042507157,
       "nombre": "LA CASA DEL BOSQUE 3",
       "web": "https://www.google.com.ar",
@@ -61,7 +61,7 @@ if (alojamientosEnMemoria === null) {
     },
     {
       "id": 14,
-      "imagen": "../statics/data/Alojamiento.webp",
+      "imagen": "../statics/data/14.webp",
       "cuit": 20043573579,
       "nombre": "LA CASA DEL BOSQUE 4",
       "web": "https://www.google.com.ar",
@@ -75,7 +75,7 @@ if (alojamientosEnMemoria === null) {
     },
     {
       "id": 15,
-      "imagen": "../statics/data/Alojamiento.webp",
+      "imagen": "../statics/data/15.webp",
       "cuit": 20043817818,
       "nombre": "LA CASA DEL BOSQUE 5",
       "web": "https://www.google.com.ar",
@@ -89,7 +89,7 @@ if (alojamientosEnMemoria === null) {
     },
     {
       "id": 16,
-      "imagen": "../statics/data/Alojamiento.webp",
+      "imagen": "../statics/data/16.webp",
       "cuit": 20044390680,
       "nombre": "LA CASA DEL BOSQUE 6",
       "web": "https://www.google.com.ar",
@@ -103,7 +103,7 @@ if (alojamientosEnMemoria === null) {
     },
     {
       "id": 17,
-      "imagen": "../statics/data/Alojamiento.webp",
+      "imagen": "../statics/data/17.webp",
       "cuit": 20044705606,
       "nombre": "LA CASA DEL BOSQUE 7",
       "web": "https://www.google.com.ar",
@@ -117,7 +117,7 @@ if (alojamientosEnMemoria === null) {
     },
     {
       "id": 18,
-      "imagen": "../statics/data/Alojamiento.webp",
+      "imagen": "../statics/data/18.webp",
       "cuit": 20044775191,
       "nombre": "LA CASA DEL BOSQUE 8",
       "web": "https://www.google.com.ar",
@@ -131,7 +131,7 @@ if (alojamientosEnMemoria === null) {
     },
     {
       "id": 19,
-      "imagen": "../statics/data/Alojamiento.webp",
+      "imagen": "../statics/data/19.webp",
       "cuit": 20045445934,
       "nombre": "LA CASA DEL BOSQUE 9",
       "web": "https://www.google.com.ar",
