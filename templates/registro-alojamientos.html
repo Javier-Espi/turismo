@@ -38,7 +38,7 @@
         </nav>
 
         <main>
-            <form id="formularioRegistro" > 
+            <form id="formularioRegistro" autocomplete="off" > 
                                             <!-- saco method=POST enctype=multipart/form-data -->
                 <input type="number" id="id" name="id" class="quitar">
 
@@ -50,25 +50,25 @@
 
                 <label for="nombre">Nombre del alojamiento:</label>
                  <!-- Tanto acá como en direccion no se si se pasa a BBDD soporta caracteres especiales..VER. -->
-                <input type="text" id="nombre" name="nombre" required minlength="3" maxlength="30" pattern="[A-Z0-9\s\W]+" placeholder="Solo Mayusculas. / 3-30 caract.">
+                <input type="text" id="nombre" name="nombre" required minlength="3" maxlength="30" placeholder="3-30 caract.">
 
                 <label for="web">Sitio web del alojamiento:</label>
                 <input type="url" id="web" name="web" placeholder="URL Válida ej. https//...">
 
                 <label for="telefono">Número telefónico de contacto:</label>
-                <input type="tel" id="telefono" name="telefono" required pattern="[1-3]\d{9}" placeholder="Sin pais, 0 o 15">
+                <input type="text" id="telefono" name="telefono" required placeholder="Sin +pais,9, 0 o 15" pattern="[1-3]\d{9}">
 
                 <label for="correo">Correo electrónico de contacto:</label>
                 <input type="email" id="correo" name="correo" required placeholder="email válido">
 
                 <label for="direccion">Dirección del alojamiento:</label>
-                <input type="text" id="direccion" name="direccion" required minlength="3" maxlength="30" pattern="[A-Z0-9\s\W]+" placeholder="Solo Mayusculas. / 3-30 caract.">
+                <input type="text" id="direccion" name="direccion" required minlength="3" maxlength="30" placeholder="3-30 caract.">
 
                 <label for="latitud">Latitud:</label>
-                <input type="text" id="latitud" name="latitud" required pattern="-32\.1[6-8]\d{3}" placeholder="Ej.:-32.17000 dentro de la localidad">
+                <input type="text" id="latitud" name="latitud" required placeholder="Ej.:-32.17000 dentro de la localidad">
 
                 <label for="longitud">Longitud:</label>
-                <input type="text" id="longitud" name="longitud" required pattern="-64\.7[6-8]\d{3}" placeholder="Ej.: -64.77000 dentro de la localidad">
+                <input type="text" id="longitud" name="longitud" required placeholder="Ej.: -64.77000 dentro de la localidad">
                 <button id="btnSubmitForm" type="button">Registrar Alojamiento</button>
                 <button id="btnGestionEliminarAlojamiento" type="button">Eliminar Alojamiento</button>
             </form>
@@ -80,7 +80,7 @@
             <div class="footer-contacto">
               <div class="footer-contacto-texto">
                 <span> Servicios al Turista: Calle 2 y 5. </span>
-                <span> Te.(322)55-5555 de 8-19 hs. </span>
+                <span> Te.(322) 55-5555 de 8-19 hs. </span>
               </div>
               <div class="footer-contacto-logos">
                 <a href="https://www.google.com.ar">

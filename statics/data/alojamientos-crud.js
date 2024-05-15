@@ -11,10 +11,12 @@ class Alojamiento {
     this.coordenadas = [lat, long];
   }
 }
+// hasta que se puedan tomar datos de un servidor nos tomamos la licencia de almacenar
+// los datos en un objeto JS y para ello debo utilizar var
 
-var alojamientosEnMemoria = {}
-alojamientosEnMemoria = localStorage.getItem('guardadoEnLocalStorage');
+var alojamientosEnMemoria = localStorage.getItem('guardadoEnLocalStorage');
 var alojamientosGuardados = {};
+var imagenGestionar = ""
 if (alojamientosEnMemoria === null) {
   alojamientosGuardados = [
     {

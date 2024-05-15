@@ -40,6 +40,8 @@ function cargarSelectorPorNombre() {
 
     const btnNavGestionar = document.getElementById('btnNavGestionar');
     btnNavGestionar.addEventListener('click', function () {
+      const foto = document.getElementById('imagen');
+      foto.removeAttribute('required');
       activaDesactivaClasePorId("btnNavRegistrar","ocultar",true)
       activaDesactivaClasePorId("formularioSeleccion","quitar",false);
       activaDesactivaClasePorId("formularioRegistro","ocultar",false);
@@ -51,7 +53,7 @@ function cargarSelectorPorNombre() {
       if (selectorGestionar.value !== "Ver lista desplegable") {
           const alojamientoSel = alojamientoSeleccionadoPorNombre(selectorGestionar.value);
           const id = document.getElementById('id');
-          //const imagen = document.getElementById('imagen'); //No sin servidor
+        
           const cuit = document.getElementById('cuit');
           const nombre = document.getElementById('nombre');
           const web = document.getElementById('web');
@@ -61,7 +63,8 @@ function cargarSelectorPorNombre() {
           const latitud = document.getElementById('latitud');
           const longitud = document.getElementById('longitud');
           id.value = alojamientoSel.id;
-          //imagen.value = alojamientoSel.imagen //No sin servidor
+         
+          imagenGestionar = alojamientoSel.imagen;
           cuit.value = alojamientoSel.cuit;
           nombre.value = alojamientoSel.nombre;
           web.value = alojamientoSel.web;
@@ -170,12 +173,16 @@ function agregoAlojamientoAlRegistro(alojamiento) {
 
 
 function enviarDatos() {
+  let rutaImagen = imagenGestionar
+  if (imagen.value !== "") {
+    rutaImagen = "../statics/data/foto-a-verificar.jpeg"
+  }
   const alojamientoParaIngresar = new Alojamiento(
-    id.value, "../statics/data/foto-a-verificar.jpeg", cuit.value, nombre.value,
+    id.value, rutaImagen, cuit.value, nombre.value,
           web.value, telefono.value, correo.value,
           direccion.value, latitud.value, longitud.value
     );
-
+  imagenGestionar = "";
   if (existeId(parseInt(id.value, 10))) {
    borroAlojamientoPorId(parseInt(id.value, 10));}
   
