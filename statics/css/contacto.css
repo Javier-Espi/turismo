@@ -23,8 +23,8 @@ main {
     min-height: 300px;
     display: flex;
     margin: 20px;
-      align-items: normal;
-    justify-content: space-evenly;
+    align-items: normal;
+    justify-content: center;
 }    
 
 .preferenciaEnvio,
@@ -39,6 +39,7 @@ main {
     justify-content: center;
     margin: 10px;
     gap: 3px;
+    padding: 15px;
 }
 
 .form-label{
@@ -52,6 +53,9 @@ main {
     width: 300px;
      }
 
+     #formularioContacto {
+        padding: 10px;
+     }
 
 #formularioContacto label {
     font-size: 13px;
@@ -88,7 +92,6 @@ main {
 
 #btnSubmitContacto {
     grid-column: 3/5;
-    margin: 30px;
     background-color: var(--destacado-a);
     color: var(--neutro-n);
 	border-radius: 10px;
@@ -99,6 +102,8 @@ main {
     justify-content: center;
     cursor: pointer;
     width: 100px;
+    margin-top: 45px;
+    margin-left: 60px;
 }
 
 
@@ -116,8 +121,19 @@ main {
 
     main {
         flex-direction: column;
-        height: 400px;
+        height: 550px;
         align-items: center;
         justify-content: center;
 	}
+
+    #btnSubmitContacto {
+        margin-top: 25px;
+        margin-left: 80px;
+    }
+
+    #formularioContacto input, 
+    #formularioContacto label {
+        width: 250px;
+    }
+
   }
