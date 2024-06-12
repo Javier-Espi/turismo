@@ -44,7 +44,6 @@ body {
   }
 	
 .logo-header {
-	height: 50px;
 	width: 150px;
 }
   
@@ -91,8 +90,7 @@ body {
   }
 
   .img-footer-logo{
-    height: 50px;
-    width: 150px;
+    width: 180px;
   }
 
   .footer-contacto {
