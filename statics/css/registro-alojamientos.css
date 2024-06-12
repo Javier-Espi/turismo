@@ -16,6 +16,10 @@
     min-height: 70px;
   }
 
+  #navIrAlojamientos {
+    cursor: pointer;
+  }
+
 .menu-nav-segundo {
 	grid-column: 1/5;
     min-height: 70px;
