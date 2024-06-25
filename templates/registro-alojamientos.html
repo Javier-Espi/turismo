@@ -25,6 +25,12 @@
         <nav class="menu-nav-segundo">
             <div id="btnNavRegistrar" class="menu-nav-section-registrar">REGISTRAR NUEVO
             </div>
+            <div class="contenedor-imagen" id="contenedorImagen">
+              <div class="imagen-gestionar">
+                <img src="../statics/img/registro-alojamiento/foto-pre-registro.jpeg" alt="" id="imagenGestionar">
+              </div>
+              <div id="btnEditarImagenGestionar" class="btn-imagen-gestionar">Cambiar</div>
+            </div>
             <div class="registro-alojamiento-gestionar">
                 <div  id="btnNavGestionar" class="menu-nav-div-section-gestionar">GESTIONAR
                 </div>    
@@ -38,12 +44,15 @@
         </nav>
 
         <main>
-            <form id="formularioRegistro" autocomplete="off" > 
+            <form id="formularioRegistro" autocomplete="off"> 
                                             <!-- saco method=POST enctype=multipart/form-data -->
                 <input type="number" id="id" name="id" class="quitar">
 
-                <label for="imagen">Imagen del alojamiento:</label>
-                <input  id="imagen" type="file" accept="image/png, image/jpeg, image/webp" name="imagen" required>
+                <label for="imagenInput" id="imagenLabel">Imagen del alojamiento:</label>
+                <input  id="imagenInput" type="file" accept="image/png, image/jpeg, image/webp" name="imagen">
+                
+                <label for="imagenRuta"  class="quitar">Url del alojamiento:</label>
+                <input  id="imagenRuta" type="url" name="imagenRuta" class="quitar">
                 
                 <label for="cuit">CUIT del propietario:</label>
                 <input type="text" id="cuit" name="cuit" required pattern="\d{11}" placeholder="11 dígitos sin guiones">
@@ -103,7 +112,6 @@
             </nav>
           </footer>   
     </div>
-    <script src="../statics/data/alojamientos-crud.js"></script>
     <script src="../statics/js/reutilizables.js"></script>
     <script src="../statics/js/registro-alojamientos.js"></script>
 </body>

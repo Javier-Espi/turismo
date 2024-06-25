@@ -23,6 +23,3 @@ formularioContacto.addEventListener('submit', function (event) {
     event.preventDefault();
     validarFormulario();
 }, false);
-
-let dato = 123 + "1";
-console.log(typeof(dato))

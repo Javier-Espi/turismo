@@ -1,59 +1,121 @@
+const BASEURL = 'http://127.0.0.1:5000';
 
+/**
+ * Función para realizar una petición fetch con JSON.
+ * @param {string} url - La URL a la que se realizará la petición.
+ * @param {string} method - El método HTTP a usar (GET, POST, PUT, DELETE, etc.).
+ * @param {Object} [data=null] - Los datos a enviar en el cuerpo de la petición.
+ * @returns {Promise<Object>} - Una promesa que resuelve con la respuesta en formato JSON.
+ */
+async function conectarseAlBackend(url, method, data = null) {
+  const options = {
+      method: method,
+      headers: {
+          'Content-Type': 'application/json',
+      },
+      body: data ? JSON.stringify(data) : null,  // Si hay datos, los convierte a JSON y los incluye en el cuerpo
+  };
+  try {
+    const response = await fetch(url, options);  // Realiza la petición fetch
+    if (!response.ok) {
+      throw new Error(`Error: ${response.statusText}`);
+    }
+    return await response.json();  // Devuelve la respuesta en formato JSON
+  } catch (error) {
+    console.error('Fetch error:', error);
+    alert('Ocurrió un error inesperado al comunicarse con el servidor.');
+    const irAtras =  document.getElementById('navIrAlojamientos');
+    irAtras.click();
+  }
+}
 
-function obtenerDatosAlojamientos() {
-  return alojamientosGuardados;
-};
-
-
-
-function cargarSelectorPorNombre() {
-    const data = obtenerDatosAlojamientos();
+async function cargarSelectorPorNombre() {
+  try {
+    const data = await conectarseAlBackend(BASEURL+'/api/alojamientos', 'GET');
     const listaNombresAlojamientos = data.map(alojamiento => alojamiento.nombre);
     listaNombresAlojamientos.unshift("Ver lista desplegable"); // Para no dejar un alojamiento como default al inicio
     agregarSelectPorId('selectorGestionar', listaNombresAlojamientos);
-};
-
-
-  function alojamientoSeleccionadoPorNombre(nombre) {
-      let data = obtenerDatosAlojamientos();
-      let alojamiento = data.find(aloj => aloj.nombre === nombre);
-      if (!alojamiento) {
-        throw new Error('Alojamiento no encontrado');
-      }
-      return alojamiento
+  } catch (error) {
+    console.error('Error al cargar lista del Seleccionador de alojamientos:', error);
   }
+}
 
+async function alojamientoSeleccionadoPorNombre(nombre) {
+  try {
+    const data = await conectarseAlBackend(BASEURL+'/api/alojamientos', 'GET');
+    const alojamiento = data.find(aloj => aloj.nombre === nombre);
+    if (!alojamiento) {
+      throw new Error('Alojamiento no encontrado');
+    }
+    return alojamiento;
+  } catch (error) {
+    console.error('Error al buscar el alojamiento:', error);
+  }
+}
 
-
-  document.addEventListener('DOMContentLoaded', () => {
-    cargarSelectorPorNombre();
+document.addEventListener('DOMContentLoaded', async () => {
+  try {
+    await cargarSelectorPorNombre();
 
     activaDesactivaClasePorId("formularioSeleccion","quitar",true);
+    activaDesactivaClasePorId("contenedorImagen","quitar",true);
     activaDesactivaClasePorId("btnGestionEliminarAlojamiento","ocultar",true);
     activaDesactivaClasePorId("formularioRegistro","ocultar",true);
 
+    const imagenInput = document.getElementById('imagenInput');
     const btnNavRegistrar = document.getElementById('btnNavRegistrar');
     btnNavRegistrar.addEventListener('click', function () {
-      activaDesactivaClasePorId("btnNavGestionar","ocultar",true);
+      imagenInput.required = true;
+      activaDesactivaClasePorId("btnNavGestionar","quitar",true);
+      activaDesactivaClasePorId("contenedorImagen","quitar",false);
+      activaDesactivaClasePorId("btnEditarImagenGestionar","quitar",true);
       activaDesactivaClasePorId("formularioRegistro","ocultar",false);
     }, false,);
 
     const btnNavGestionar = document.getElementById('btnNavGestionar');
     btnNavGestionar.addEventListener('click', function () {
-      const foto = document.getElementById('imagen');
-      foto.removeAttribute('required');
-      activaDesactivaClasePorId("btnNavRegistrar","ocultar",true)
+      activaDesactivaClasePorId("btnNavRegistrar","quitar",true)
+      activaDesactivaClasePorId("btnEditarImagenGestionar","ocultar",true);
+      activaDesactivaClasePorId("imagenLabel","quitar",true)
+      activaDesactivaClasePorId("imagenInput","quitar",true)
+      activaDesactivaClasePorId("contenedorImagen","quitar",false);    
       activaDesactivaClasePorId("formularioSeleccion","quitar",false);
       activaDesactivaClasePorId("formularioRegistro","ocultar",false);
       activaDesactivaClasePorId("btnGestionEliminarAlojamiento","ocultar",false);
       document.getElementById("btnSubmitForm").textContent = "Modificar Alojamiento";
     }, false,);
 
-    selectorGestionar.addEventListener("change", () => {
+    const btnEditarImagenGestionar = document.getElementById('btnEditarImagenGestionar');
+    btnEditarImagenGestionar.addEventListener('click', function () {
+      imagenInput.required = true;
+      activaDesactivaClasePorId("imagenLabel","quitar",false);
+      activaDesactivaClasePorId("imagenInput","quitar",false);
+      const imagenGestionar = document.getElementById('imagenGestionar');
+      imagenGestionar.src = '../statics/img/registro-alojamiento/foto-pre-registro.jpeg';
+    }, false,);
+
+    
+    imagenInput.addEventListener('change', function () {
+      const archivo = imagenInput.files[0];
+      if (archivo) {
+        const urlImagen = URL.createObjectURL(archivo);
+        const imagenGestionar = document.getElementById('imagenGestionar');
+        imagenGestionar.src = urlImagen;
+        imagenRuta.value = 'https://res.cloudinary.com/dyscqlrom/image/upload/foto-a-verificar_ydejdr.jpg'
+      } else {
+        imagenGestionar.src = '../statics/img/registro-alojamiento/foto-pre-registro.jpeg';
+      }
+    }, false,);
+
+
+    selectorGestionar.addEventListener("change", async () => {
       if (selectorGestionar.value !== "Ver lista desplegable") {
-          const alojamientoSel = alojamientoSeleccionadoPorNombre(selectorGestionar.value);
+        try {
+          activaDesactivaClasePorId("btnEditarImagenGestionar","ocultar",false);
+          const alojamientoSel = await alojamientoSeleccionadoPorNombre(selectorGestionar.value);
+          const imagenGestionar = document.getElementById('imagenGestionar');
           const id = document.getElementById('id');
-        
+          const imagenRuta = document.getElementById('imagenRuta');
           const cuit = document.getElementById('cuit');
           const nombre = document.getElementById('nombre');
           const web = document.getElementById('web');
@@ -62,61 +124,36 @@ function cargarSelectorPorNombre() {
           const direccion = document.getElementById('direccion');
           const latitud = document.getElementById('latitud');
           const longitud = document.getElementById('longitud');
+          imagenGestionar.src = alojamientoSel.imagenRuta;
+          imagenRuta.value = alojamientoSel.imagenRuta;
           id.value = alojamientoSel.id;
-         
-          imagenGestionar = alojamientoSel.imagen;
           cuit.value = alojamientoSel.cuit;
           nombre.value = alojamientoSel.nombre;
           web.value = alojamientoSel.web;
           telefono.value = alojamientoSel.telefono;
           correo.value = alojamientoSel.correo;
           direccion.value = alojamientoSel.direccion;
-          latitud.value = alojamientoSel.coordenadas[0];
-          longitud.value = alojamientoSel.coordenadas[1];
-      };
-    });
-  });
-
-  const btnGestionEliminarAlojamiento = document.getElementById('btnGestionEliminarAlojamiento');
-  btnGestionEliminarAlojamiento.addEventListener('click', function () {
-    borrarDatos();
-  }, false,);
-
-  const btnSubmitForm = document.getElementById('btnSubmitForm');
-  btnSubmitForm.addEventListener('click',  function () {
-    otrasValidaciones();
-  }, false,);
-
-function otrasValidaciones() {
-    let datos = obtenerDatosAlojamientos();
-    // Los alojamientos pueden tener ID de 10 a 90 en la segunda etapa seguramente
-    // se asignará en el sercidor, pero por ahora se busca el 1ro libre en Local Storage
-    // Este dato esta oculto y read-only para el usuario mientras se use desde acá
-    let idsPosibles = Array.from({ length: 90 }, (_, i) => i + 10);
-    datos.forEach(alojamiento => {
-      let index = idsPosibles.indexOf(alojamiento.id);
-      if (index !== -1) {
-        idsPosibles.splice(index, 1);
+          latitud.value = alojamientoSel.latitud;
+          longitud.value = alojamientoSel.longitud;
+        } 
+        catch (error) {
+          console.error(error);
+        }
       }
     });
-    let id = document.getElementById('id').value;
-    if (id == "") {
-      document.getElementById('id').value = idsPosibles[0];
-    }
-    // Validación de CUIT
-    let cuit = document.getElementById('cuit').value;
-    if (verificarCuit(cuit)) {
-      const datosValidos = validarFormulario();
-      if (datosValidos) {
-        enviarDatos();
-      };
-    } else {
-      alert('El CUIT ingresado no es válido.');
-    };
-  };
 
+    const btnGestionEliminarAlojamiento = document.getElementById('btnGestionEliminarAlojamiento');
+    btnGestionEliminarAlojamiento.addEventListener('click',borrarDatos);
 
-  
+    const formulario = document.getElementById('btnSubmitForm');
+    formulario.addEventListener('click',otrasValidaciones);
+      }
+
+  catch (error) {
+    console.error('Error al conectar con el servidor:', error);
+  }
+});
+
 function verificarCuit(cuit) {
   if (cuit.length !== 11) {
     return false;
@@ -142,66 +179,92 @@ function validarFormulario() {
 }
 
 
-// ******* ESTAS FUNCIONES ESTAN SOLO AL EFECTO DE SIMULAR LAS ACCIONES A REALIZAR EN UNA 2DA ETAPA AL TENER SERVIDOR *****
-function existeId(idBuscado) {
-  return alojamientosGuardados.some(alojamiento => alojamiento.id === idBuscado);
-}
-
-function indexPorId(idBuscado) {
-  for (let i = 0; i < alojamientosGuardados.length; i++) {
-    if (alojamientosGuardados[i].id === idBuscado) {
-      return i;
-    }
-  }
-}
-
-
-function borroAlojamientoPorId(idBorrar) {
-  const indice = indexPorId(idBorrar);
-  if (indice !== -1) {
-    alojamientosGuardados.splice(indice, 1);
-    console.log("Alojamiento con ID " + idBorrar + " eliminado.");
+async function otrasValidaciones() {
+  // Validación de CUIT
+  let cuit = document.getElementById('cuit').value;
+  if (verificarCuit(cuit)) {
+    const datosValidos = validarFormulario();
+    if (datosValidos) {
+      await enviarDatos();
+    };
   } else {
-    console.log("No se encontró ningún alojamiento con el ID " + idBorrar);
+    alert('El CUIT ingresado no es válido.');
+  };
+};
+
+async function borroAlojamientoPorId(idBorrar) {
+  try{
+    conectarseAlBackend(BASEURL+'/api/alojamientos/'+idBorrar, 'DELETE');
+  }
+  catch (error) {
+  console.error('Error al intentar borrar el registro en el servidor:', error);
   }
 }
 
-function agregoAlojamientoAlRegistro(alojamiento) {
-  alojamientosGuardados.push(alojamiento);
-}
-
-
-
-function enviarDatos() {
-  let rutaImagen = imagenGestionar
-  if (imagen.value !== "") {
-    rutaImagen = "../statics/data/foto-a-verificar.jpeg"
-  }
-  const alojamientoParaIngresar = new Alojamiento(
-    id.value, rutaImagen, cuit.value, nombre.value,
-          web.value, telefono.value, correo.value,
-          direccion.value, latitud.value, longitud.value
-    );
-  imagenGestionar = "";
-  if (existeId(parseInt(id.value, 10))) {
-   borroAlojamientoPorId(parseInt(id.value, 10));}
-  
-  agregoAlojamientoAlRegistro(alojamientoParaIngresar)
-  window.alert("Los datos están siendo enviados al Servidor y serán verificados antes de subirse efectivamente a la página.");
-
-  localStorage.setItem('guardadoEnLocalStorage', JSON.stringify(alojamientosGuardados));
-  const irAtras =  document.getElementById('navIrAlojamientos');
-  irAtras.click();
-}
-
-
-function borrarDatos() {
+async function borrarDatos() {
   let advertencia = window.confirm('Los datos de su alojamiento se borrarán definitivamente, ¿está seguro de continuar?');
   if (advertencia) {
-    borroAlojamientoPorId(parseInt(id.value, 10));
+    await borroAlojamientoPorId(parseInt(id.value, 10));
     window.alert('El alojamiento fue dado de baja con éxito');
-    localStorage.setItem('guardadoEnLocalStorage', JSON.stringify(alojamientosGuardados));
     const irAtras =  document.getElementById('navIrAlojamientos');
     irAtras.click();
   };
 };
+
+class Alojamiento {
+  constructor(id=null, imagenRuta, cuit, nombre, web=null, telefono, correo, direccion, latitud, longitud){
+    this.id = parseInt(id, 10);
+    this.imagenRuta = imagenRuta;
+    this.cuit = parseInt(cuit, 10);
+    this.nombre = nombre;
+    this.web = web;
+    this.telefono = parseInt(telefono, 10);
+    this.correo = correo;
+    this.direccion = direccion;
+    this.latitud = latitud;  // Tengo que darle formato numero???? a las coordenadas
+    this.longitud = longitud;
+  }
+}
+
+// LA IDEA ERA EN ENVIAR DATOS LLAMAR A ESTAS FUNCIONES VER SI ASI O DIRECTO TODO EN LA FUNCION
+
+async function agregoAlojamientoAlRegistro(alojamiento) {
+  try{
+    conectarseAlBackend(BASEURL+'/api/alojamientos', 'POST', alojamiento);
+    console.log('Entro al POST')
+  }
+  catch (error) {
+  console.error('Error al intentar el alta del registro en el servidor:', error);
+  }
+}
+
+async function modificoAlojamientoDelRegistro(idModificar, alojamiento) {
+  //alojamientosGuardados.push(alojamiento);
+  try{
+    conectarseAlBackend(BASEURL+'/api/alojamientos/'+idModificar, 'PUT', alojamiento);
+    console.log('Entro al PUT')
+  }
+  catch (error) {
+  console.error('Error al intentar modificar el registro en el servidor:', error);
+  }
+}
+
+
+async function enviarDatos() {
+  const alojamientoParaProcesar = new Alojamiento(
+    id.value, imagenRuta.value, cuit.value, nombre.value,
+          web.value, telefono.value, correo.value,
+          direccion.value, latitud.value, longitud.value
+    );
+
+  if( id.value!==""){
+    modificoAlojamientoDelRegistro(alojamientoParaProcesar.id, alojamientoParaProcesar)
+  }else{
+    // Si no hay id, realiza una petición POST para crear un nuevo 
+    agregoAlojamientoAlRegistro(alojamientoParaProcesar)
+  }
+
+  window.alert('La operación realizada con el alojamiento fue realizada con éxito');
+  const irAtras =  document.getElementById('navIrAlojamientos');
+  irAtras.click();
+}

@@ -22,12 +22,13 @@
 
 .menu-nav-segundo {
 	grid-column: 1/5;
-    min-height: 70px;
+    min-height: 110px;
 	background-color: var(--destacado-r);
     display: flex;
 	text-align: center;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: center;
+    gap: 20px;
 }
 
 .registro-alojamiento-registrarse-btn {
@@ -37,19 +38,55 @@
 }
 
 .menu-nav-section-registrar {
-    background-color: var(--principal-a);
+    background-color: var(--destacado-a);
     color: var(--destacado-v);
     border-radius: 10px;
 	border: 2px solid var(--destacado-v);
     width: 200px;
     justify-content: center;
     display: flex;
-    cursor: pointer    
+    cursor: pointer;
+    margin-right: 20px;
 }
 
+.contenedor-imagen{
+    background-color: var(--destacado-r);
+    color: var(--destacado-v);
+    width: 200px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.imagen-gestionar{
+    width: 100px;
+    justify-content: center;
+    display: flex;
+    padding: 10px
+}
+
+#imagenGestionar {
+    border-radius: 10px;
+	border: 2px solid var(--destacado-v);
+    width: 100px;
+    margin-left: 15px;
+}
+
+.btn-imagen-gestionar {
+    background-color: var(--destacado-a);
+    border-radius: 10px;
+	border: 2px solid var(--destacado-v);
+    width: 65px;
+    max-height: 25px;
+    justify-content: center;
+    text-align: center;
+    display: flex;
+    margin-left: 15px;
+    cursor: pointer;
+}
 
 .menu-nav-div-section-gestionar{
-    background-color: var(--principal-a);
+    background-color: var(--destacado-a);
     color: var(--destacado-v);
 	border-radius: 10px;
 	border: 2px solid var(--destacado-v);
@@ -58,7 +95,9 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    cursor: pointer
+    cursor: pointer;
+    margin-left: 40px;
+    margin-bottom: 10px;
 }
 
 .menu-nav-div-form-gestionar {
@@ -67,8 +106,28 @@
     justify-content: center;
 }
 
+#labelSelectorGestionar {
+    margin-left: 10px;
+    display: flex;
+    width: 100px;
+    height: 45px;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    margin-right: 5px;
+    margin-left: 20px;
+}
+
 #selectorGestionar {
-    height: 30px;
+    display: flex;
+    width: 150px;
+    height: 45px;
+    flex-direction: column;
+    flex-wrap: wrap;
+    text-align: center;
+    justify-content: center;
+    border-radius: 10px;
 }
 
 main {
@@ -120,7 +179,7 @@ input {
 
 #btnSubmitForm {
     grid-column: 1/2;
-    background-color: var(--principal-a);
+    background-color: var(--destacado-a);
     color: var(--neutro-n);
 	border-radius: 10px;
 	border: 2px solid var(--destacado-v);
