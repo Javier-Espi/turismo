@@ -30,14 +30,16 @@ main h2 {
   text-align: start;
 }
 
-main div {
+.contenedor-articulo {
   background-color: var(--principal-r);
+  border-radius: 20px;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   align-items: center;
   width: 600px;
   justify-content: center;
+  margin-bottom: 20px;
   
 }
  
@@ -51,6 +53,7 @@ main div {
   height: 250px;
   width: 250px;
   margin: 20px;
+  border-radius: 20px;
 }
 
 
