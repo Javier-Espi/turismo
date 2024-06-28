@@ -1,3 +1,27 @@
+function verificarCuit(cuit) {
+  if (cuit.length !== 11) {
+    return false;
+  }
+  let acumulado = 0;
+  let digitos = cuit.split('').map(num => parseInt(num, 10));
+  let digitoVerificador = digitos.pop();
+  for (let i = 0; i < digitos.length; i++) {
+    acumulado += digitos[9 - i] * (2 + (i % 6));
+  }
+  let verif = 11 - (acumulado % 11);
+  if (verif === 11) {
+    verif = 0;
+  } else if (verif === 10) {
+    verif = 9;
+  }
+  return digitoVerificador === verif;
+}
+
+
+function validarFormulario() {
+  return document.getElementById('formularioRegistro').checkValidity();
+}
+
 async function cargarSelectorPorNombre() {
   try {
     const data = await conectarseAlBackend(BASEURL+'/api/alojamientos', 'GET');
@@ -99,6 +123,16 @@ document.addEventListener('DOMContentLoaded', async () => {
       }
     }, false,);
 
+    const cuit = document.getElementById('cuit');
+    cuit.addEventListener('focusout', function () {
+      if (!verificarCuit(cuit.value)) {
+        activaDesactivaClasePorId("cuit","invalid",true);
+      } else {
+        activaDesactivaClasePorId("cuit","invalid",false);
+      }
+    }, false,);
+
+
     await cargarSelectorPorNombre();
 
     selectorGestionar.addEventListener("change", async () => {
@@ -149,35 +183,9 @@ document.addEventListener('DOMContentLoaded', async () => {
   }
 });
 
-function verificarCuit(cuit) {
-  if (cuit.length !== 11) {
-    return false;
-  }
-  let acumulado = 0;
-  let digitos = cuit.split('').map(num => parseInt(num, 10));
-  let digitoVerificador = digitos.pop();
-  for (let i = 0; i < digitos.length; i++) {
-    acumulado += digitos[9 - i] * (2 + (i % 6));
-  }
-  let verif = 11 - (acumulado % 11);
-  if (verif === 11) {
-    verif = 0;
-  } else if (verif === 10) {
-    verif = 9;
-  }
-  return digitoVerificador === verif;
-}
-
-
-function validarFormulario() {
-  return document.getElementById('formularioRegistro').checkValidity();
-}
-
-
 async function otrasValidaciones() {
   // Validación de CUIT
-  let cuit = document.getElementById('cuit').value;
-  if (verificarCuit(cuit)) {
+  if (verificarCuit(cuit.value)) {
     const datosValidos = validarFormulario();
     if (datosValidos) {
       await enviarDatos();

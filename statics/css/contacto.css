@@ -53,7 +53,7 @@ main {
     width: 300px;
      }
 
-     #formularioContacto {
+#formularioContacto {
         padding: 10px;
      }
 
@@ -70,7 +70,8 @@ main {
     align-items: center;
     justify-content: center;
     width: 200px;
-    margin: 2px
+    height: 30px;
+    margin: 5px
     }
 
 #formularioContacto input {
@@ -85,13 +86,14 @@ main {
     text-align: center;
     align-items: center;
     justify-content: center;
+    height: 30px;
     width: 200px;
-    margin: 2px
+    margin: 5px
 }
 
 
 #btnSubmitContacto {
-    grid-column: 3/5;
+    grid-column: 1/5;
     background-color: var(--destacado-a);
     color: var(--neutro-n);
 	border-radius: 10px;
@@ -102,8 +104,8 @@ main {
     justify-content: center;
     cursor: pointer;
     width: 100px;
-    margin-top: 45px;
-    margin-left: 60px;
+    margin-top: 40px;
+    margin-left: 55px;
 }
 
 

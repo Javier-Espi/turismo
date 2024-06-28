@@ -29,7 +29,7 @@ body {
 	justify-content: center;
 	color: var(--destacado-a);
 	min-height: 70px;
-	min-width: 100vw;
+	min-width: 95vw;
 	border-radius: 20px;
 	border: 10px solid var(--destacado-r);
 }

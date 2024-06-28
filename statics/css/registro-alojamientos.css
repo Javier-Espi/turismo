@@ -240,8 +240,12 @@ footer {
     min-height: 55px;
 }
 
-input:invalid, .invalid {
+input:invalid {
     border: 3px solid var(--error-color);
+}
+
+.invalid {
+    border: 3px solid var(--error-color) !important;
 }
 
 input:valid, .valid {
