@@ -175,7 +175,28 @@ input {
     justify-content: center;
     margin: 2px
 }
+.contenedor-coordenadas {
+    grid-column: 1/3;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
 
+span {
+    color: var(--destacado-a);
+}
+
+#map {
+    border-radius: 10px;
+	border: 2px solid var(--destacado-v);
+    height: 190px;
+    width: 380px;
+}
 
 #btnSubmitForm {
     grid-column: 1/2;
@@ -190,6 +211,9 @@ input {
     height: 30px;
     cursor: pointer;
     margin: 2px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-weight: bold;    
 }
 
 #btnGestionEliminarAlojamiento {
@@ -204,7 +228,10 @@ input {
     justify-content: center;
     height: 30px;
     cursor: pointer;
-    margin: 2px
+    margin: 2px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-weight: bold;
 }
 
 footer {
@@ -213,16 +240,20 @@ footer {
     min-height: 55px;
 }
 
-input:invalid {
+input:invalid, .invalid {
     border: 3px solid var(--error-color);
 }
 
-input:valid {
+input:valid, .valid {
     border: 3px solid var(--ok-color);
 }
 
 
 @media screen and (max-device-width: 400px) {
+
+    main {
+        align-items: normal;
+    }
 
     .menu-nav-div-form-gestionar {
         flex-direction: column;

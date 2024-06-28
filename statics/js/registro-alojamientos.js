@@ -1,34 +1,3 @@
-const BASEURL = 'http://127.0.0.1:5000';
-
-/**
- * Función para realizar una petición fetch con JSON.
- * @param {string} url - La URL a la que se realizará la petición.
- * @param {string} method - El método HTTP a usar (GET, POST, PUT, DELETE, etc.).
- * @param {Object} [data=null] - Los datos a enviar en el cuerpo de la petición.
- * @returns {Promise<Object>} - Una promesa que resuelve con la respuesta en formato JSON.
- */
-async function conectarseAlBackend(url, method, data = null) {
-  const options = {
-      method: method,
-      headers: {
-          'Content-Type': 'application/json',
-      },
-      body: data ? JSON.stringify(data) : null,  // Si hay datos, los convierte a JSON y los incluye en el cuerpo
-  };
-  try {
-    const response = await fetch(url, options);  // Realiza la petición fetch
-    if (!response.ok) {
-      throw new Error(`Error: ${response.statusText}`);
-    }
-    return await response.json();  // Devuelve la respuesta en formato JSON
-  } catch (error) {
-    console.error('Fetch error:', error);
-    alert('Ocurrió un error inesperado al comunicarse con el servidor.');
-    const irAtras =  document.getElementById('navIrAlojamientos');
-    irAtras.click();
-  }
-}
-
 async function cargarSelectorPorNombre() {
   try {
     const data = await conectarseAlBackend(BASEURL+'/api/alojamientos', 'GET');
@@ -53,14 +22,38 @@ async function alojamientoSeleccionadoPorNombre(nombre) {
   }
 }
 
+let marcador = undefined
+
+function agregarMarcador (lat, long) {
+  if (marcador) {
+    marcador.remove(map);
+  }
+  marcador = L.marker([lat, long]);
+  marcador.addTo(map);
+  activaDesactivaClasePorId("latitud","invalid",false);
+  activaDesactivaClasePorId("longitud","invalid",false);
+  activaDesactivaClasePorId("latitud","valid",true);
+  activaDesactivaClasePorId("longitud","valid",true);
+}
+
 document.addEventListener('DOMContentLoaded', async () => {
   try {
-    await cargarSelectorPorNombre();
-
+    
     activaDesactivaClasePorId("formularioSeleccion","quitar",true);
     activaDesactivaClasePorId("contenedorImagen","quitar",true);
     activaDesactivaClasePorId("btnGestionEliminarAlojamiento","ocultar",true);
     activaDesactivaClasePorId("formularioRegistro","ocultar",true);
+    activaDesactivaClasePorId("latitud","invalid",true);
+    activaDesactivaClasePorId("longitud","invalid",true);
+
+    
+    map.on('click', function(e) {
+      let latitud = e.latlng.lat;
+      let longitud = e.latlng.lng;
+      document.getElementById('latitud').value = latitud;
+      document.getElementById('longitud').value = longitud;
+    agregarMarcador(latitud, longitud)
+    });
 
     const imagenInput = document.getElementById('imagenInput');
     const btnNavRegistrar = document.getElementById('btnNavRegistrar');
@@ -80,7 +73,6 @@ document.addEventListener('DOMContentLoaded', async () => {
       activaDesactivaClasePorId("imagenInput","quitar",true)
       activaDesactivaClasePorId("contenedorImagen","quitar",false);    
       activaDesactivaClasePorId("formularioSeleccion","quitar",false);
-      activaDesactivaClasePorId("formularioRegistro","ocultar",false);
       activaDesactivaClasePorId("btnGestionEliminarAlojamiento","ocultar",false);
       document.getElementById("btnSubmitForm").textContent = "Modificar Alojamiento";
     }, false,);
@@ -107,8 +99,10 @@ document.addEventListener('DOMContentLoaded', async () => {
       }
     }, false,);
 
+    await cargarSelectorPorNombre();
 
     selectorGestionar.addEventListener("change", async () => {
+      activaDesactivaClasePorId("formularioRegistro","ocultar",false);
       if (selectorGestionar.value !== "Ver lista desplegable") {
         try {
           activaDesactivaClasePorId("btnEditarImagenGestionar","ocultar",false);
@@ -135,6 +129,7 @@ document.addEventListener('DOMContentLoaded', async () => {
           direccion.value = alojamientoSel.direccion;
           latitud.value = alojamientoSel.latitud;
           longitud.value = alojamientoSel.longitud;
+          agregarMarcador(latitud.value, longitud.value)
         } 
         catch (error) {
           console.error(error);
