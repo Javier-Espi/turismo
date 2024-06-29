@@ -234,7 +234,6 @@ class Alojamiento {
 async function agregoAlojamientoAlRegistro(alojamiento) {
   try{
     conectarseAlBackend(BASEURL+'/api/alojamientos', 'POST', alojamiento);
-    console.log('Entro al POST')
   }
   catch (error) {
   console.error('Error al intentar el alta del registro en el servidor:', error);
@@ -245,7 +244,6 @@ async function modificoAlojamientoDelRegistro(idModificar, alojamiento) {
   //alojamientosGuardados.push(alojamiento);
   try{
     conectarseAlBackend(BASEURL+'/api/alojamientos/'+idModificar, 'PUT', alojamiento);
-    console.log('Entro al PUT')
   }
   catch (error) {
   console.error('Error al intentar modificar el registro en el servidor:', error);
@@ -267,7 +265,7 @@ async function enviarDatos() {
     agregoAlojamientoAlRegistro(alojamientoParaProcesar)
   }
 
-  window.alert('La operación realizada con el alojamiento fue realizada con éxito');
+  window.alert('La operación solicitada fue realizada con éxito');
   const irAtras =  document.getElementById('navIrAlojamientos');
   irAtras.click();
 }
