@@ -24,7 +24,7 @@ function validarFormulario() {
 
 async function cargarSelectorPorNombre() {
   try {
-    const data = await conectarseAlBackend(BASEURL+'/api/alojamientos', 'GET');
+    const data = await conectarseJsonBackend(BASEURL+'/api/alojamientos', 'GET');
     const listaNombresAlojamientos = data.map(alojamiento => alojamiento.nombre);
     listaNombresAlojamientos.unshift("Ver lista desplegable"); // Para no dejar un alojamiento como default al inicio
     agregarSelectPorId('selectorGestionar', listaNombresAlojamientos);
@@ -35,7 +35,7 @@ async function cargarSelectorPorNombre() {
 
 async function alojamientoSeleccionadoPorNombre(nombre) {
   try {
-    const data = await conectarseAlBackend(BASEURL+'/api/alojamientos', 'GET');
+    const data = await conectarseJsonBackend(BASEURL+'/api/alojamientos', 'GET');
     const alojamiento = data.find(aloj => aloj.nombre === nombre);
     if (!alojamiento) {
       throw new Error('Alojamiento no encontrado');
@@ -197,7 +197,7 @@ async function otrasValidaciones() {
 
 async function borroAlojamientoPorId(idBorrar) {
   try{
-    conectarseAlBackend(BASEURL+'/api/alojamientos/'+idBorrar, 'DELETE');
+    conectarseJsonBackend(BASEURL+'/api/alojamientos/'+idBorrar, 'DELETE');
   }
   catch (error) {
   console.error('Error al intentar borrar el registro en el servidor:', error);
@@ -233,7 +233,7 @@ class Alojamiento {
 
 async function agregoAlojamientoAlRegistro(alojamiento) {
   try{
-    conectarseAlBackend(BASEURL+'/api/alojamientos', 'POST', alojamiento);
+    conectarseFormBackend(BASEURL+'/api', 'POST', alojamiento);
   }
   catch (error) {
   console.error('Error al intentar el alta del registro en el servidor:', error);
@@ -241,9 +241,8 @@ async function agregoAlojamientoAlRegistro(alojamiento) {
 }
 
 async function modificoAlojamientoDelRegistro(idModificar, alojamiento) {
-  //alojamientosGuardados.push(alojamiento);
   try{
-    conectarseAlBackend(BASEURL+'/api/alojamientos/'+idModificar, 'PUT', alojamiento);
+    conectarseFormBackend(BASEURL+'/api/'+idModificar, 'PUT', alojamiento);
   }
   catch (error) {
   console.error('Error al intentar modificar el registro en el servidor:', error);
@@ -252,6 +251,7 @@ async function modificoAlojamientoDelRegistro(idModificar, alojamiento) {
 
 
 async function enviarDatos() {
+  const form = document.getElementById('formularioRegistro');
   const alojamientoParaProcesar = new Alojamiento(
     id.value, imagenRuta.value, cuit.value, nombre.value,
           web.value, telefono.value, correo.value,
@@ -259,10 +259,10 @@ async function enviarDatos() {
     );
 
   if( id.value!==""){
-    modificoAlojamientoDelRegistro(alojamientoParaProcesar.id, alojamientoParaProcesar)
+    modificoAlojamientoDelRegistro(alojamientoParaProcesar.id, form)
   }else{
     // Si no hay id, realiza una petición POST para crear un nuevo 
-    agregoAlojamientoAlRegistro(alojamientoParaProcesar)
+    agregoAlojamientoAlRegistro(form)
   }
 
   window.alert('La operación solicitada fue realizada con éxito');

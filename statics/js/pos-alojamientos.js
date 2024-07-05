@@ -7,7 +7,7 @@
     }
 
     function actualizarListaAlojamientos() {
-        conectarseAlBackend(BASEURL+'/api/alojamientos', 'GET')
+        conectarseJsonBackend(BASEURL+'/api/alojamientos', 'GET')
         .then(data => {
             const listaAlojamientos = document.querySelector('.alojamiento-lista');
             let coordenadas = [];
@@ -49,7 +49,7 @@ function actualizarAlojamientoSeleccionadoPorId(idAlojamiento) {
         removerClaseQuitar.classList.remove("quitar");
     };
 
-    conectarseAlBackend(BASEURL+'/api/alojamientos/'+idAlojamiento, 'GET')
+    conectarseJsonBackend(BASEURL+'/api/alojamientos/'+idAlojamiento, 'GET')
       .then(data => {
         
         const alojamiento = data;
