@@ -233,7 +233,7 @@ class Alojamiento {
 
 async function agregoAlojamientoAlRegistro(alojamiento) {
   try{
-    conectarseFormBackend(BASEURL+'/api', 'POST', alojamiento);
+    conectarseFormBackend(BASEURL+'/api/alojamientos', 'POST', alojamiento);
   }
   catch (error) {
   console.error('Error al intentar el alta del registro en el servidor:', error);
@@ -242,7 +242,7 @@ async function agregoAlojamientoAlRegistro(alojamiento) {
 
 async function modificoAlojamientoDelRegistro(idModificar, alojamiento) {
   try{
-    conectarseFormBackend(BASEURL+'/api/'+idModificar, 'PUT', alojamiento);
+    conectarseFormBackend(BASEURL+'/api/alojamientos/'+idModificar, 'PUT', alojamiento);
   }
   catch (error) {
   console.error('Error al intentar modificar el registro en el servidor:', error);
