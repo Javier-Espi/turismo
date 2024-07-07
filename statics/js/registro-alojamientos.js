@@ -267,5 +267,5 @@ async function enviarDatos() {
 
   window.alert('La operación solicitada fue realizada con éxito');
   const irAtras =  document.getElementById('navIrAlojamientos');
-  irAtras.click();
+  setTimeout(irAtras.click(), 2000);
 }
